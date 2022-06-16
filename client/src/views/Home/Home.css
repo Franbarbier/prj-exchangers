@@ -1,0 +1,229 @@
+#Home-view{
+    background-color: #F0F0F3;
+}
+#Home-view>div{
+    padding: 10% 0;
+}
+#Home-view main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#Home-view main header{
+    width: 50%;
+}
+#Home-view main>div {
+    width: 40%;
+}
+#Home-view main div>div>span{
+    font-size: 0.8em;
+    color: #bebebe;
+    margin-bottom: 5%;
+    display: block;
+}
+#Home-view header h1{
+    font-size: 3em;
+}
+#Home-view header p{
+    color: var(--gris1);
+    margin: 10% 0;
+}
+#Home-view header button:last-child{
+    margin-left: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#mira-plataf{
+    padding: 10%;
+    box-shadow: -6px -6px 19px 0px #fff, 6px 6px 19px 0px rgba(174, 174, 192, 0.3), inset -6px -6px 7px 0px rgba(174, 174, 192, 0.2), inset 6px 6px 7px 0px #fff;
+    border-radius: 15px;
+    cursor: pointer;
+    position: relative;
+}
+#mira-plataf h3{
+    margin-left: 10px;
+    font-size: 1.5em;
+}
+#mira-plataf>div, #mira-plataf>div>div, #mira-plataf li a, #mira-plataf li a>div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#mira-plataf img{
+    width: 36px;
+}
+#mira-plataf ul{
+    padding: 10% 0;
+    position: absolute;
+    width: 100%;
+    background-color: #F0F0F3;
+    box-shadow: 6px -6px 19px 0px #fff, 6px 6px 19px 0px rgba(174, 174, 192, 0.3), inset -6px -6px 7px 0px rgba(174, 174, 192, 0.2), inset 6px 6px 7px 0px #fff;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0%;
+    z-index: 2;
+    border-radius: 15px;
+}
+
+#mira-plataf li a{
+    padding: 2% 10%;
+    margin: 2% 0;
+    font-size: 1.5em;
+    color: #676767;
+}
+#mira-plataf li a:hover, #mira-plataf li a:hover button{
+    color: #272727;
+    
+}
+#mira-plataf li a button{
+    background-color: transparent;
+    border: none;
+    color: #676767;
+    cursor: pointer;
+}
+
+#steps{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20vh 0;
+}
+#steps>div{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    color: var(--gris1);
+}
+#steps>div img{
+    width: 100%;
+    opacity: 0.7;
+}
+#steps>div>div{
+    width: 60%;
+    box-shadow: -4px -4px 10px 0px #fff,
+                -4px -4px 10px 0 rgba(174, 174, 192, 0.4),
+                inset 3px 3px 3px 0 rgba(174, 174, 192, 0.25), 
+                inset -3px -3px 3px 0px #fff;
+    border-radius: 250px;
+    padding: 10px;
+}
+#steps>div p{
+    margin-left: 10px;
+    font-size: 0.9em;
+}
+
+#plataformas-cont>h3{
+    text-align: center;
+    font-size: 2.5em;
+    margin: 10% 0;
+}
+#plataformas-cont li{
+    padding: 3.5% 5%;
+    box-shadow: -6px -6px 19px 0px #fff, 6px 6px 19px 0px rgb(174 174 192 / 20%), inset -6px -6px 7px 0px rgb(174 174 192 / 20%), inset 6px 6px 7px 0px #fff;
+    margin: 10% 0;
+    border-radius: 15px;
+}
+.plataf-name{
+    opacity: 0.7;
+    transition: .2s;
+    cursor: pointer;
+    position: relative;
+    z-index: 6;
+
+}
+#plataformas-cont li:hover .plataf-name{
+    opacity: 1;
+}
+#plataformas-cont li:hover .plataf-name>img{
+    transform: rotate(180deg)
+}
+.plataf-name, .plataf-name>div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.plataf-icon{
+    margin-right: 10px;
+}
+.plat-info{
+    padding: 10% 5%;
+}
+.plat-info hr{
+    margin: 8% auto;
+    border: none;
+    height: 1px;
+    background-color: rgb(174, 174, 174);
+}
+.calculadora-cont h6{
+    font-size: 1.2em;
+}
+.calculadora-cont .Boton1{
+    padding: 20px 38px;
+    font-size: 1.1em;
+    margin: 10% auto 0;
+    display: block;
+    color: #000;
+    font-weight: 600;
+}
+.plat-selected .plataf-name>img{
+    transform: rotate(45deg)!important;
+}
+
+.plat-selected{
+    box-shadow: inset -10px -10px 10px 0 #fff, inset 10px 10px 10px 0 rgb(174 174 192 / 20%)!important;
+}
+
+.plataf-name h4{
+    font-size: 1.8em;
+}
+.plataf-name img{
+    width: 32px;
+    transition: .5s cubic-bezier(.44,.8,.4,1.02);
+}
+
+
+#faq-section>h3{
+    font-size: 2.5em;
+    margin: 25vh 0 5%;
+}
+#faq-section li{
+    padding: 5% 0;
+    border-bottom: 1px solid rgb(195, 195, 195);
+}
+#faq-section li>div:first-child{
+    display: flex;
+    align-items: center;
+    padding: 3.55% 0;
+}
+#faq-section h6{
+    font-size: 1.5em;
+}
+.icon-preg{
+    display: block;
+    position: relative;
+    width: 1em;
+    height: 1em;
+    margin-right: 15px;
+}
+.icon-preg>div{
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    border-radius: 10px;
+    top: 50%;
+
+}
+.icon-preg>div:first-child{
+    transform: rotate(90deg) translateX(-3px);
+}
+.icon-preg>div:last-child{
+    transform: translateY(-3px);
+}
+.rta{
+    margin-left: calc(1em + 15px);
+    padding: 0% 2%;
+    border-left: #000 solid 1px;
+}

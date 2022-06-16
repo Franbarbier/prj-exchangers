@@ -1,0 +1,32 @@
+.Checkout{
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+    background: #f0f0f3;
+    width: 60%;
+    z-index: 3;
+    padding: 10% 20% 4% 20%;
+    height: 75%;
+    overflow: auto;
+}
+body{
+    /* overflow: hidden; */
+}
+.Checkout .InputField{
+    margin: 3% 0;
+}
+.Checkout .toggler{
+    display: flex;
+    align-items: center;
+}
+.toggler .toggle-option{
+    padding: 12px 24px;
+    box-shadow: -6px -6px 19px 0px #fff, 6px 6px 19px 0px rgba(174, 174, 192, 0.4), inset -6px -6px 7px 0px rgba(174, 174, 192, 0.2), inset 6px 6px 7px 0px #fff;
+    margin: 0 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.toggler .toggle-option.selected{
+    box-shadow: inset 6px 5px 7px 0px rgb(174 174 192 / 20%), inset -6px -6px 7px 0px #fff, -3.5px -3.5px 8px 0px #fff, 6px 6px 14px 0px rgb(174 174 192 / 20%);
+
+}
