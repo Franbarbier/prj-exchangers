@@ -19,6 +19,10 @@ app.use(cors({
 
 app.use('/plataformas', plataformasRoutes)
 
+app.get('/', (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
+    res.send({ "msg": "This has CORS enabled 🎈" })
+})
 
 const CONNECTION_URL = 'mongodb+srv://prj:prjexchangers123@prj-exchangers.dkon2qb.mongodb.net/?retryWrites=true&w=majority'
 const PORT = process.env.PORT || 5000
