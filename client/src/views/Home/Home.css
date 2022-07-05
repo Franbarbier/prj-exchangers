@@ -23,7 +23,7 @@ html{
     background-attachment: #f0f0f3;
 }
 #navv>div>div:first-child{
-    width: 10vw;
+    width: 100px;
     margin: -1.5% 0;
 }
 #navv>div>div img{
