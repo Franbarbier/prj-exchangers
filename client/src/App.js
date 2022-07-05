@@ -8,6 +8,7 @@ import { AppProvider } from './contexts/AppContext';
 import './css-global.css';
 
 import Home from './views/Home/Home';
+import Panel from './views/Panel/Panel';
 
 
 
@@ -24,6 +25,7 @@ const App = () => {
           <ScrollToTop/>
             <Routes>
                 <Route path="/" element={<Home setActiveTab={setActiveTab} />} />
+                <Route path="/admin-panel" element={<Panel setActiveTab={setActiveTab} />} />
             </Routes>
             </AppProvider>
         </Router>

@@ -1,0 +1,221 @@
+#ModalCreatePlataforma{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(2px);
+}
+#ModalCreatePlataforma>div{
+    position: absolute;
+    display: block!important;
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%,-50%);
+    padding: 5%;
+    background-color: #F0F0F3;
+    box-shadow: 0px 0px 15px 0px #c0c0c0;
+    border-radius: 10px;
+    width: 60vw;
+    max-height: 65vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#ModalCreatePlataforma h4{
+    margin-bottom: 5%;
+    font-size: 1.2em
+}
+#ModalCreatePlataforma div>div>div{
+    margin-bottom: 7%;
+}
+#ModalCreatePlataforma label{
+    font-size: 0.9em;
+    font-weight: 300;
+    color: #000;
+    display: block;
+    margin-bottom: 2%;
+}
+/* .input-cont{
+    background: linear-gradient(to right, var(--gradient1),var(--gradient2));
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-bottom: 5%
+} */
+
+#ModalCreatePlataforma input{
+    background-color: #f0f0f3;
+    border: none;
+    border-bottom: 1px solid #1c1c1c;
+    outline: none;
+    display: block;
+    transition: .2s;
+
+}
+#ModalCreatePlataforma input:focus{
+    border-color: var(--gradient2);
+}
+.plat-name{
+    font-size: 1.5em;
+    /* background: -webkit-linear-gradient(to right, var(--gradient1), var(--gradient2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+}
+
+.diaEntrega>div, .date-selector>div{
+    width: 110%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 4%!important;
+}
+.date-selector>div>div{
+    display: flex;
+    margin-bottom: 0!important;
+}
+.date-selector{
+    position:relative;
+    /* width: 20%; */
+    margin: 0!important;
+}
+.diaEntrega input{
+    width: 7%;
+}
+.date-selector span{
+    box-shadow: -4px -4px 10px 0px #fff, -4px -4px 10px 0 rgb(174 174 192 / 40%), inset -3px -3px 3px 0 rgb(174 174 192 / 25%), inset 3px 3px 3px 0px #fff;
+    padding: 10px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 5%;
+    width: calc(90% - 28px);
+}
+.date-selector ul{
+    /* display: none; */
+    position: absolute;
+
+    box-shadow: -4px -4px 10px 0px #fff, -4px -4px 10px 0 rgb(174 174 192 / 40%), inset -3px -3px 3px 0 rgb(174 174 192 / 25%), inset 3px 3px 3px 0px #fff;
+    padding: 10px 14px;
+    border-radius: 5px;
+    background-color: #f3f3f5;
+    width: 70%;
+    top:0;
+}
+.date-selector ul li:hover{
+    cursor: pointer;
+    font-weight: 600;
+}
+.date-selector input {
+    font-size: 1em;
+    width: 30%;
+}
+.diaEntrega button{
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px dashed #1c1c1c;
+    cursor: pointer;
+}
+.diaEntrega button:hover{
+    border-bottom-style: solid;
+}
+.diaEntrega button p{
+    margin-left: 10px;
+}
+
+
+
+
+/* TEXT EDITOR */
+.descripcion button{
+    background-color: transparent;
+    border: 1px solid #ddd;
+    padding: 5px 8px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: .2s;
+}
+.descripcion button:hover{
+    opacity: 1;
+    background-color: #ddd;
+    color: #000
+}
+.ProseMirror{
+    background-color: #e1e1e1;
+    padding: 2%;
+    min-height: 15vh;
+}
+/* Basic editor styles */
+.ProseMirror > * + * {
+    margin-top: 0.75em;
+  }
+  .ProseMirror ul, .ProseMirror ol {
+    padding: 0 1rem;
+  }
+  .ProseMirror li {
+    list-style: unset;
+  }
+  .ProseMirror h1, .ProseMirror h2, .ProseMirror h3, .ProseMirror h4, .ProseMirror h5, .ProseMirror h6 {
+    line-height: 1.1;
+  }
+  .ProseMirror code {
+    background-color: rgba(97, 97, 97, 0.1);
+    color: #616161;
+  }
+  .ProseMirror pre {
+    background: #0D0D0D;
+    color: #FFF;
+    font-family: 'JetBrainsMono', monospace;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+  }
+  .ProseMirror pre code {
+    color: inherit;
+    padding: 0;
+    background: none;
+    font-size: 0.8rem;
+  }
+  .ProseMirror img {
+    max-width: 100%;
+    height: auto;
+  }
+  .ProseMirror blockquote {
+    padding-left: 1rem;
+    border-left: 2px solid rgba(13, 13, 13, 0.1);
+  }
+  .ProseMirror hr {
+    border: none;
+    border-top: 2px solid rgba(13, 13, 13, 0.1);
+    margin: 2rem 0;
+  }
+  
+
+  #crear-plat {
+    background: linear-gradient(to right, var(--gradient1), var(--gradient2));
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .1s;
+  }
+  #crear-plat:hover{
+    transform: scale(1.07);
+  }
+
+  #rene-plat{
+    background: transparent;
+    border: 1px solid #616161;
+    color: 616161;
+    padding: 10px 25px;
+
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .2s;
+    margin-right: 5% ;
+
+  }
+  #rene-plat:hover{
+    background-color: #ddd;
+  }

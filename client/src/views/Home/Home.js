@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from "framer-motion";
 
+import parse from 'html-react-parser';
 
 import './Home.css';
 import Boton1 from '../../components/Boton1/Boton1';
@@ -12,21 +13,40 @@ import Checkout from '../../components/Checkout/Checkout';
 
 
 const Home = ({ setActiveTab }) => {
-    
-
+  
+  
   const [viewPlatforms, setViewPlatforms] = useState(false)
-  const [platformSelected, setPlatformSelected] = useState()
+  const [selectedFaq, setSelectedFaq] = useState(false)
   
   const [dataOpereta, setDataOpereta] = useState({})
 
   const [openCheckout, setOpenCheckout] = useState(false)
+
+  const [platformData, setPlatformData] = useState({descripcion: '<div></div>'})
+    
+
+  const [recibir, setRecibir] = useState(0)
+  const [enviar, setEnviar] = useState(0)
+
+  useEffect(()=>{
+    console.log(dataOpereta)
+  }, [dataOpereta])
+
   useEffect(()=>{
 
     setTimeout(() => {
-      setDataOpereta({...dataOpereta, platform : platformSelected})
+      setDataOpereta({...dataOpereta, platform : platformData?.nombre})
     }, 200);
 
-  }, [platformSelected])
+
+    // const child = ConvertStringToHTML(platformData?.descripcion);
+    // document.querySelector('#plat-info').appendChild(child);
+    // console.log(platformData)
+    
+  }, [platformData]) 
+  
+
+ 
   
   useEffect(()=>{
 
@@ -36,70 +56,63 @@ const Home = ({ setActiveTab }) => {
     }else{
       document.getElementsByTagName('body')[0].style.overflowY = 'auto'
     }
-
-  }, [openCheckout])
-
-  useEffect(()=>{
-    console.log(dataOpereta)
     
-  })
-  const bbdd = [
+    
+  }, [openCheckout])
+  
+  
+  useEffect(()=>{
+    console.log(selectedFaq)
+    
+  }, [selectedFaq])
+
+
+  const plataformas = useSelector(state => state.plataformas)
+
+  const faqs = [
     {
-      nombre: 'Payoneer',
-      icon: '',
-      descripcion: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s.',
-      comision: ''
+      pregunta : 'En cuánto tengo mi dinero despues de mandarlo?',
+      rta: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.'
     },
     {
-      nombre: 'Wise',
-      icon: '',
-      descripcion: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s.',
-      comision: ''
+      pregunta : 'En cuánto tengo mi dinero despues de mandarlo?',
+      rta: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.'
     },
     {
-      nombre: 'Banco',
-      icon: '',
-      descripcion: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s.',
-      comision: ''
+      pregunta : 'En cuánto tengo mi dinero despues de mandarlo?',
+      rta: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.'
     },
     {
-      nombre: 'Deel',
-      icon: '',
-      descripcion: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s.',
-      comision: ''
+      pregunta : 'En cuánto tengo mi dinero despues de mandarlo?',
+      rta: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.'
     },
     {
-      nombre: 'Hiperwallet',
-      icon: '',
-      descripcion: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
-      comision: ''
-    }
-    ,
-    {
-      nombre: 'Zelle',
-      icon: '',
-      descripcion: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
-      comision: ''
-    },
-    {
-      nombre: 'Cripto',
-      icon: '',
-      descripcion: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
-      comision: ''
+      pregunta : 'En cuánto tengo mi dinero despues de mandarlo?',
+      rta: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.'
     }
   ]
-
 
        
   function render(){
       return  <div id="Home-view">
+          <nav id="navv">
+            <div>
+              <div>
+                <img src="/assets/logo-l.png"/>
+              </div>
+              <ul>
+                <li><a href="#plataformas">ver plataformas</a></li>
+                <li><a href="#faq-section">preguntas frecuentes</a></li>
+              </ul>
+            </div>
+          </nav>
                 <div className='main-cont'>
                     <main>
                         <header>
                             <h1>Tu exchanger de confianza.</h1>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                            <Boton1 text={'Elegí tu cuenta'}/>
-                            <button>Preguntas frecuentes</button>
+                            <a href="#plataformas"><Boton1 text={'Elegí tu cuenta'}/></a>
+                            <a href="#faq-section"><button>Preguntas frecuentes</button></a>
                         </header>
                         <div>
                           <div onClick={()=>{ setViewPlatforms(!viewPlatforms) }}>
@@ -108,9 +121,9 @@ const Home = ({ setActiveTab }) => {
                               <div >
                                 <div>
                                   <div>
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Simple_icon_time.svg/2560px-Simple_icon_time.svg.png" />
+                                    <img src={plataformas[0]?.icon_url} />
                                   </div>
-                                  <h3>Payoneer</h3>
+                                  <h3>{plataformas[0]?.nombre}</h3>
                                 </div>
 
                                 <div>
@@ -120,11 +133,21 @@ const Home = ({ setActiveTab }) => {
                               {viewPlatforms &&
 
                               <ul>
-                                  {bbdd.map((plataforma)=>(
+                                  {plataformas?.map((plataforma)=>(
                                     <li>
-                                      <a>
+                                      <a 
+                                      // href={`#${plataforma.nombre}`}
+                                        onClick={()=>{
+                                          let julie = document.getElementById(plataforma.nombre)
+                                          julie.scrollIntoView({
+                                            behavior: "smooth",
+                                            block: "center",
+                                            inline: "center"
+                                          });
+                                        }}
+                                      >
                                       <div>
-                                        <img src={`/assets/icons/${plataforma.icon}`} />
+                                        <img src={plataforma.icon_url} />
                                         <p>{plataforma.nombre}</p>
                                       </div>
                                       <button>Ver más</button>
@@ -141,70 +164,76 @@ const Home = ({ setActiveTab }) => {
                     <div id="steps">
                       <div>
                         <div>
-                          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Simple_icon_time.svg/2560px-Simple_icon_time.svg.png" />
+                          <img width="36px" src="/assets/choose1.png" />
                         </div>
                         <p>Selecciona desde que plataforma envias el dinero.</p>
                       </div>
                       <div>
                         <div>
-                          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Simple_icon_time.svg/2560px-Simple_icon_time.svg.png" />
+                          <img width="36px" src="/assets/calc1.png" />
                         </div>
                         <p>Calcula el monto y seleccioná por donde retiras.</p>
                       </div>
                       <div>
                         <div>
-                          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Simple_icon_time.svg/2560px-Simple_icon_time.svg.png" />
+                          <img width="36px" src="/assets/receive1.png" />
                         </div>
                         <p>Pasá a retirar tu dinero por la oficina elegida :D.</p>
                       </div>
 
                     </div>
+                    <div id="plataformas"></div>
                     <div id="plataformas-cont">
                         <h3>Dónde tenés tu saldo</h3>
                         <ul>
-                          {bbdd.map((plataforma)=>(
+                          {plataformas.map((plataforma)=>(
                             <li
                               id={plataforma.nombre}
-                              className={ plataforma.nombre == platformSelected && "plat-selected"} 
-                              onClick={ ()=>{ setPlatformSelected(plataforma.nombre) } } >
+                              className={ plataforma.nombre == platformData?.nombre && "plat-selected"} 
+                              onClick={ ()=>{ 
+                                setPlatformData(plataforma.nombre)
+                                setPlatformData(plataforma)  
+                              } } >
                               <div className="plataf-name">
                                 <div>
-                                  <img className='plataf-icon' src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Simple_icon_time.svg/2560px-Simple_icon_time.svg.png" />
+                                  <img className='plataf-icon' src={plataformas[0]?.icon_url} />
                                   <h4>
                                     {plataforma.nombre}
                                   </h4>
                                 </div>
                                 <img 
                                   onClick={ (e)=>{ 
-                                    if(plataforma.nombre == platformSelected) {
+                                    if(plataforma.nombre == platformData?.nombre) {
                                         e.stopPropagation()
-                                        setPlatformSelected(null)
+                                        setPlatformData(null)
                                         setOpenCheckout(false)
                                      }
                                   } } 
                                   src="/assets/mas.png" />
 
                               </div>
-                              { plataforma.nombre == platformSelected &&
-                                <div className='plat-info'>
+                              { plataforma.nombre == platformData?.nombre &&
+                                <div id='plat-info'>
                                   {/* <p>{plataforma.descripcion}</p> */}
-                                  <p>
-                                  La operación tiene dos modalidades y el monto mínimo de operación es de 1000 USD:
-                                  <br/><br/>
-                                  Modalidad 1:<br/>
-                                  El dinero se entrega el dinero el mismo dia que realizas la transferencia a la cuenta, con un costo final del 8%.<br/>
-                                  1 USD de Payoneer = 0,92 USD<br/><br/>
-                                  Modalidad 2:<br/>
-                                  El dinero se entrega al tercer día hábil de realizada la transferencia a la cuenta, con un costo final del 7%.<br/>
-                                  1 USD de Payoneer = 0,93 USD<br/><br/>
-                                  Pueden optar por recibir una parte en USD y otra en ARS depositados o entregados en mano billete físico (en el caso de los USD solo trabajamos las últimas dos series cara grande).<br/><br/>
-                                  Por favor, poner como motivo y referencia de pago lo que indica en el instructivo PDF que le enviaremos al finalizar su orden pedido.<br/>
-                                  Una vez que nos envíes el comprobante de transferencia por wpp, se confirma la operación.
-                                  </p>
+                                  <div>
+                                    {parse(plataforma.descripcion)}
+                                    
+                                  </div>
                                   <hr />
                                   <div className="calculadora-cont">
-                                    <h6>Simulador de calculadora</h6>
-                                    <Calculadora dataOpereta={dataOpereta} setDataOpereta={setDataOpereta} type="number" cometa={5} divisa='usd' plataforma={plataforma.nombre} />
+                                    <h6>Calculá tu monto</h6>
+                                    <Calculadora
+                                      platformData={platformData} 
+                                      dataOpereta={dataOpereta} 
+                                      setDataOpereta={setDataOpereta} 
+                                      setRecibir={setRecibir} 
+                                      setEnviar={setEnviar} 
+                                      enviar={enviar}
+                                      recibir={recibir}
+                                      type="number" 
+                                      divisa='usd' 
+                                      plataforma={plataforma.nombre} 
+                                    />
                                     <a href={`#${plataforma.nombre}`} onClick={ ()=>{ setOpenCheckout(true) } } >
                                       <Boton1 text="Operar con esta plataforma" />
                                     </a>
@@ -243,7 +272,12 @@ const Home = ({ setActiveTab }) => {
                                           transition={{ duration: 0.7, delay: 0.5}}
                                         >
                                         <Checkout
-                                          setOpenCheckout={setOpenCheckout}
+                                           platformData={platformData} 
+                                           dataOpereta={dataOpereta} 
+                                           setDataOpereta={setDataOpereta} 
+                                           setRecibir={setRecibir} 
+                                           setEnviar={setEnviar} 
+                                           setOpenCheckout={setOpenCheckout}
                                           /> 
                                         </motion.div>
                                         
@@ -261,18 +295,25 @@ const Home = ({ setActiveTab }) => {
                     <div id="faq-section">
                         <h3>Tenés preguntas?</h3>
                         <ul>
-                          <li>
-                            <div>
-                              <div className="icon-preg">
-                                <div></div>
-                                <div></div>
+                          {faqs.map((faq, index)=>(
+                            <li onClick={()=>{setSelectedFaq(index)}}>
+                              <div className="pregunta-cont">
+                                <div className="icon-preg">
+                                  <div></div>
+                                  <div></div>
+                                </div>
+                                <h6>{faq.pregunta}</h6>
                               </div>
-                              <h6>En cuánto tengo mi dinero despues de mandarlo?</h6>
-                            </div>
-                            <div className="rta">
-                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                            </div>
-                          </li>
+                                { selectedFaq == index &&
+                                  <div className="rta">
+                                      <p>{faq.rta}</p>
+                                  </div>
+                                }
+                            </li>
+                          ))
+
+                          }
+                         
                         </ul>
 
                     </div>

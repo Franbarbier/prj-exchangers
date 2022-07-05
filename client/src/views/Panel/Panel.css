@@ -1,0 +1,100 @@
+#Panel-view{
+    background-color: #F0F0F3;
+    min-height: 100vh;
+}
+#Panel-view>div{
+    padding: 10% 0;
+}
+#Panel-view>div>div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-cont>div>button{
+    background: linear-gradient(to right, var(--gradient1), var(--gradient2));
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .2s;
+}
+.main-cont>div>button:hover{
+    opacity: 0.8;
+    box-shadow: 0px 0px 7px 3px #fff;
+}
+#actual-platform{margin-top: 10%;}
+
+#actual-platform li{
+    padding: 3%;
+    margin: 2% 0;
+    border-bottom: 1px solid #bcbcbc;
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    border-radius: 3px;
+}
+#actual-platform li:hover{
+    background-color: #d9d9d9;
+}
+.img-plat{
+    width: 36px;
+    /* height: 48PX; */
+}
+.img-plat img{
+    width: 100%;
+}
+.nombre-plat{
+    width: 25%;
+    padding-left: 5%;
+}
+.comisiones-plat, .comisiones-plat>div{
+    display: flex;
+    font-size: 14px;
+    font-weight: 600;
+    width: fit-content;
+    white-space: nowrap;
+}
+.comisiones-plat>div{
+    border-right: 1px solid #bcbcbc;
+    padding-right: 5%;
+    margin-right: 5%;
+}
+.comisiones-plat>div:last-child{
+    border-right: none;
+    padding-right: 0%;
+    margin-right: 0%;
+}
+.comisiones-plat>div span{
+    display: inline-block;
+    color: #7b7b7b;
+    margin-left: 5px;
+}
+.comisiones-plat>span{
+    color: #3a3a3a;
+}
+.comisiones-plat>div{}
+
+.config-plat{
+    position: absolute;
+    top: 50%;
+    right: 3%;
+    transform: translateY(-50%);
+}
+.config-plat span{
+    font-size: 0.9em;
+    display: inline-block;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.config-plat span:hover{
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.delete-btn{
+    color: rgb(168, 25, 0);
+}
+

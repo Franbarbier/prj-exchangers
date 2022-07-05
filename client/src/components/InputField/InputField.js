@@ -20,7 +20,7 @@ const InputField = ({ label='', type='text', id='', divisa='', valueSetter, tipo
                  <label>{label}</label>
                  <b>{divisa}</b>
                  
-                 <input className={tipo} type={type} value={valueSetter} onChange={ (e)=>{ setNewMonto( [tipo , e.target.value] ) }}  id={id} />
+                 <input className={tipo} type={type} value={valueSetter} onChange={ (e)=>{ setNewMonto( [tipo , e.target.value] ) }} id={id} />
                 
               </div>
 

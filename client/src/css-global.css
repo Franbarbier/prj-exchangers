@@ -7,7 +7,9 @@
     --shadowBlurOut1: 19;
     --shadowBlurIn1: 7;
     --shadowFullInnerMas: 10;
-    --shadowFullInnerMenos: 10
+    --shadowFullInnerMenos: 10;
+    --gradient1: #0B1058;
+    --gradient2: #256CAC;
 }
   
 *{ margin: 0; padding: 0; }
@@ -16,7 +18,7 @@ li{ list-style: none; }
 body{ overflow-x: hidden;font-family: Sulphur Point, sans-serif;}
 h1, h2, h3, h4, h5, h6{  }
 
-button, input, textarea{ font-family: Sulphur Point, sans-serif }
+button, input, textarea, select{ font-family: Sulphur Point, sans-serif }
 
 ::-webkit-scrollbar{width:6px;height:4px;position:absolute}
 ::-webkit-scrollbar-track{background:hsla(0,0%,78%,.8);transition:background .2s}
