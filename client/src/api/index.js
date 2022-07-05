@@ -8,7 +8,8 @@ import axios from 'axios';
 // }
 const headers = '';
 
-const ENDPOINT = 'http://localhost:5000/';
+// const ENDPOINT = 'http://localhost:5000/';
+const ENDPOINT = 'https://prj-exchanger.herokuapp.com/';
 
 
 const url_plataformas = ENDPOINT+'plataformas'
