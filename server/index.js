@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 
 import plataformasRoutes from './routes/plataformas.js';
+import faqsRoutes from './routes/faqs.js';
 
 // import { verifyToken } from './auth.js';
 
@@ -18,6 +19,7 @@ app.use(cors({
 }));
 
 app.use('/plataformas', plataformasRoutes)
+app.use('/faqs', faqsRoutes)
 
 app.get('/', (req, res) => {
     res.set('Access-Control-Allow-Origin', '*');

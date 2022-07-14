@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 
-import { createPlataforma } from '../../actions/plataformas.js'
+import { createPlataforma, updatePlataforma } from '../../actions/plataformas.js'
 
 import './ModalCreatePlataforma.css';
 
@@ -114,12 +114,12 @@ const MenuBar = ({ editor }) => {
       </>
     )
   }
-const Tiptap = () => {
+const Tiptap = ({editPlat}) => {
     const editor = useEditor({
       extensions: [
         StarterKit,
       ],
-      content: '<p>Información de la plataforma</p>',
+      content: editPlat ? editPlat.descripcion : '<p>Información de la plataforma</p>',
     })
   
     return (
@@ -148,8 +148,6 @@ const Tiptap = () => {
     useEffect(()=>{
         
         setDiasUl(false)
-
-        console.log(cometaSelected)
 
         let newCantEntregas = cantEntregas
         newCantEntregas[0] = {[diaSelected] : cometaSelected}
@@ -185,21 +183,17 @@ const Tiptap = () => {
   }
 
 
-const ModalCreatePlataforma = ({ setModalCreatePlataforma }) => {
+const ModalCreatePlataforma = ({ setModalCreatePlataforma, editPlat=null, setEditPlat }) => {
     
     
        // const setTipo = tipo
        const [diasUl, setDiasUl] = useState(false)
-       const [nombre, setNombre] = useState('')
-       const [cantEntregas, setCantEntregas] = useState([
-            { 'En 3 días': 0}
-        ])
+       const [nombre, setNombre] = useState(editPlat?.nombre)
+       const [cantEntregas, setCantEntregas] = useState( editPlat ? editPlat.fecha_entrega : [ { 'En 3 días': 0 } ] )
 
         // const dispatch = useDispatch()
-
-
-       useEffect(()=>{
-       })
+  
+        const dispatch = useDispatch()
 
 
     function handleCreatePlataforma(){
@@ -225,7 +219,36 @@ const ModalCreatePlataforma = ({ setModalCreatePlataforma }) => {
           } )
     }
 
-       
+
+    function handleEditPlataforma(){
+
+      let descripcion =  document.querySelector('.ProseMirror').innerHTML
+      
+      let edited_platform = {
+          nombre : nombre,
+          descripcion : descripcion,
+          fecha_entrega : cantEntregas,
+          _id : editPlat._id
+      }
+      
+      console.log(edited_platform)
+
+      updatePlataforma({edited_platform}, dispatch).then(
+          (e)=> 
+          //   console.log(e)
+            setModalCreatePlataforma(false),
+            setEditPlat(null)
+          //   document.location.reload(true)
+          ).catch( (e) =>{
+            console.log('error:::', e.error)
+   
+        } )
+    }
+
+    useEffect(()=>{
+      console.log(editPlat)
+    })
+
   function render(){
       return  <div id="ModalCreatePlataforma">
                  <div>
@@ -235,17 +258,27 @@ const ModalCreatePlataforma = ({ setModalCreatePlataforma }) => {
                         <div>
                             <div>
                                 <label>Nombre de la plataforma</label>
-                                <input onChange={(e)=>{ setNombre(e.target.value) }} className="plat-name" type="text"/>
+                                <input onChange={(e)=>{ setNombre(e.target.value) }} value={nombre} className="plat-name" type="text"/>
                             </div>
                             <div className="diaEntrega">
                                 <label>Fechas de entrega</label>
+                                {editPlat ?
+                                <div>
+                                    <div className="date-selector">
+                                        {editPlat.fecha_entrega.map((dia, index)=>(
+                                          <Entregas editEntregas={dia.fecha_entrega} cantEntregas={cantEntregas} setCantEntregas={setCantEntregas} dia={dia} indexY={index} setDiasUl={setDiasUl} diasUl={diasUl} />
+                                          ))}
+                                    </div>
+                                </div>
+                                :
                                 <div>
                                     <div className="date-selector">
                                         {cantEntregas.map((dia, index)=>(
-                                                <Entregas cantEntregas={cantEntregas} setCantEntregas=  {setCantEntregas} dia={dia} indexY={index} setDiasUl={setDiasUl} diasUl={diasUl} />
-                                        ))}
+                                          <Entregas cantEntregas={cantEntregas} setCantEntregas={setCantEntregas} dia={dia} indexY={index} setDiasUl={setDiasUl} diasUl={diasUl} />
+                                          ))}
                                     </div>
                                 </div>
+                                }
 
                                 {/* <button onClick={()=>{ setCantEntregas([...cantEntregas, {'En 8 días': 0} ]) }}> */}
                                 <button onClick={(e)=>{ e.preventDefault() }}>
@@ -263,12 +296,19 @@ const ModalCreatePlataforma = ({ setModalCreatePlataforma }) => {
                             <div className="descripcion">
                                 <label>Descripción</label>
                                 
-                                <Tiptap />
+                                <Tiptap editPlat={editPlat}/>
                             </div>
                         </div>
                     </div>
-                    <button id="rene-plat" onClick={()=>{setModalCreatePlataforma(false)}}>Descartar</button>
-                    <button id="crear-plat" onClick={ handleCreatePlataforma }>Crear</button>
+                    <button id="rene-plat" onClick={()=>{
+                                              setModalCreatePlataforma(false)
+                                              setEditPlat(null)
+                                          }}>Descartar</button>
+                    {editPlat ? 
+                      <button id="edit-plat" onClick={ handleEditPlataforma }>Guardar</button>
+                    :
+                      <button id="crear-plat" onClick={ handleCreatePlataforma }>Crear</button>
+                    }
                     </div>
 
                  </div>

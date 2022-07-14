@@ -1,4 +1,4 @@
-#ModalCreatePlataforma{
+#ModalCreateFaq{
     position: fixed;
     top:0;
     left: 0;
@@ -7,7 +7,7 @@
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(2px);
 }
-#ModalCreatePlataforma>div{
+#ModalCreateFaq>div{
     position: absolute;
     display: block!important;
     left: 50%;
@@ -23,14 +23,14 @@
     overflow-x: hidden;
 }
 
-#ModalCreatePlataforma h4{
+#ModalCreateFaq h4{
     margin-bottom: 5%;
     font-size: 1.2em
 }
-#ModalCreatePlataforma div>div>div{
+#ModalCreateFaq div>div>div{
     margin-bottom: 7%;
 }
-#ModalCreatePlataforma label{
+#ModalCreateFaq label{
     font-size: 0.9em;
     font-weight: 300;
     color: #000;
@@ -44,20 +44,24 @@
     margin-bottom: 5%
 } */
 
-#ModalCreatePlataforma input{
-    background-color: #f0f0f3;
+#ModalCreateFaq textarea{
+    background-color: #e4e4e4;
     border: none;
     border-bottom: 1px solid #1c1c1c;
     outline: none;
     display: block;
     transition: .2s;
+    resize: none;
+    width: 100%;
+    font-size: 1em;
+    padding: 2%
 
 }
-#ModalCreatePlataforma input:focus{
+#ModalCreateFaq textarea:focus{
     border-color: var(--gradient2);
 }
 .plat-name{
-    font-size: 1.5em;
+
     /* background: -webkit-linear-gradient(to right, var(--gradient1), var(--gradient2));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; */
@@ -191,7 +195,7 @@
   }
   
 
-  #crear-plat, #edit-plat {
+  #crear-plat {
     background: linear-gradient(to right, var(--gradient1), var(--gradient2));
     color: white;
     padding: 10px 25px;
@@ -200,7 +204,7 @@
     cursor: pointer;
     transition: .1s;
   }
-  #crear-plat:hover, #edit-plat:hover{
+  #crear-plat:hover{
     transform: scale(1.07);
   }
 
@@ -219,3 +223,4 @@
   #rene-plat:hover{
     background-color: #ddd;
   }
+

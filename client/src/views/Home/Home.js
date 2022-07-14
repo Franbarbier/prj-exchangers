@@ -68,29 +68,9 @@ const Home = ({ setActiveTab }) => {
 
 
   const plataformas = useSelector(state => state.plataformas)
+  const faqs = useSelector(state => state.faqs) 
 
-  const faqs = [
-    {
-      pregunta : 'En cuánto tengo mi dinero despues de mandarlo?',
-      rta: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.'
-    },
-    {
-      pregunta : 'En cuánto tengo mi dinero despues de mandarlo?',
-      rta: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.'
-    },
-    {
-      pregunta : 'En cuánto tengo mi dinero despues de mandarlo?',
-      rta: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.'
-    },
-    {
-      pregunta : 'En cuánto tengo mi dinero despues de mandarlo?',
-      rta: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.'
-    },
-    {
-      pregunta : 'En cuánto tengo mi dinero despues de mandarlo?',
-      rta: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.'
-    }
-  ]
+
 
        
   function render(){
@@ -234,9 +214,18 @@ const Home = ({ setActiveTab }) => {
                                       divisa='usd' 
                                       plataforma={plataforma.nombre} 
                                     />
-                                    <a href={`#${plataforma.nombre}`} onClick={ ()=>{ setOpenCheckout(true) } } >
+                                    <div href={`#${plataforma.nombre}`} onClick={ ()=>{ 
+                                        setOpenCheckout(true)
+                                        let julie = document.getElementById(plataforma.nombre)
+                                        julie.scrollIntoView({
+                                          behavior: "smooth",
+                                          block: "center",
+                                          inline: "center"
+                                        });
+
+                                      } } >
                                       <Boton1 text="Operar con esta plataforma" />
-                                    </a>
+                                    </div>
                                   </div>
 
                                   {openCheckout &&
@@ -272,12 +261,14 @@ const Home = ({ setActiveTab }) => {
                                           transition={{ duration: 0.7, delay: 0.5}}
                                         >
                                         <Checkout
+                                            plataforma={plataforma}
                                            platformData={platformData} 
                                            dataOpereta={dataOpereta} 
                                            setDataOpereta={setDataOpereta} 
                                            setRecibir={setRecibir} 
                                            setEnviar={setEnviar} 
                                            setOpenCheckout={setOpenCheckout}
+                                           setPlatformData={setPlatformData}
                                           /> 
                                         </motion.div>
                                         
@@ -299,15 +290,19 @@ const Home = ({ setActiveTab }) => {
                             <li onClick={()=>{setSelectedFaq(index)}}>
                               <div className="pregunta-cont">
                                 <div className="icon-preg">
-                                  <div></div>
+                                  <div className={selectedFaq == index && "abiertus"} ></div>
                                   <div></div>
                                 </div>
                                 <h6>{faq.pregunta}</h6>
                               </div>
                                 { selectedFaq == index &&
-                                  <div className="rta">
+                                  <motion.div className="rta"
+                                    initial={{y : -20, opacity:0}}
+                                    animate={{y : 0, opacity:1}}
+                                    trnasition={{ duration : 0.7 }}
+                                  >
                                       <p>{faq.rta}</p>
-                                  </div>
+                                  </motion.div>
                                 }
                             </li>
                           ))

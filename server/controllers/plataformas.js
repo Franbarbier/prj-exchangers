@@ -37,15 +37,15 @@ export const deletePlataforma = async (req, res)=>{
 
 export const updatePlataforma = async (req, res) =>{
 
-    // const cliente = req.body;
-    // const filter = {_id: cliente._id}
-    // var clienteToUpdate = await Cliente.findOneAndUpdate(filter, cliente, {new: true})
+    const plataforma = req.body.edited_platform;
+    const filter = {_id: plataforma._id}
+    var plataformaToUpdate = await Plataforma.findOneAndUpdate(filter, plataforma, {new: true})
 
-    // try{                            
-    //     res.status(201).json(clienteToUpdate)
+    try{                            
+        res.status(201).json(plataformaToUpdate)
             
-    // }catch(error){
-    //     res.status(409).json({message: error.message})
-    // }
+    }catch(error){
+        res.status(409).json({message: error.message})
+    }
 
 }

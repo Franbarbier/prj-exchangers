@@ -9,6 +9,6 @@ const router = express.Router()
 router.get('/', getPlataformas)
 router.post('/', createPlataforma)
 router.delete('/:id', deletePlataforma)
-// router.patch('/', updatePlataforma)
+router.patch('/', updatePlataforma)
 
 export default router

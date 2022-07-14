@@ -24,18 +24,18 @@ export const createPlataforma = async (plataforma, dispatch) => {
 }
 
 export const updatePlataforma = async (plataforma, dispatch) => {
-    // try{
-    //     const {data} = await api.updateCliente(cliente)
-    //     dispatch({type: UPDATE_CLIENTE, payload:data})
-    // }catch(error){
-    //     console.log(error)
-    // }
+    try{
+        const {data} = await api.updatePlataforma(plataforma)
+        dispatch({type: UPDATE_PLATAFORMA, payload:data})
+    }catch(error){
+        console.log(error)
+    }
 }
 
-export const deletePlataformas = async (id_objeciones, dispatch) => {
+export const deletePlataformas = async (id_plataformas, dispatch) => {
     try{
-        for (let index = 0; index < id_objeciones.length; index++) {
-            const{data} = await api.deletePlataformas(id_objeciones[index])
+        for (let index = 0; index < id_plataformas.length; index++) {
+            const{data} = await api.deletePlataformas(id_plataformas[index])
             dispatch({type: DELETE_PLATAFORMAS, payload:data})
         }
     }catch(error){

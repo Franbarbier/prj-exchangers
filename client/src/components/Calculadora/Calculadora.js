@@ -13,7 +13,8 @@ const Calculadora = ({type='text', id='', divisa='', plataforma='', setDataOpere
 
     
     const [newMonto, setNewMonto] = useState(0)
-    const [cometaPor, setCometaPor] = useState( dataOpereta.fecha ? Object.values(dataOpereta.fecha)[0] / 100 + 1 : Object.values(platformData.fecha_entrega[0])[0] / 100 + 1 )
+    const [cometaPor, setCometaPor] = useState( (100 - Number(Object.values(platformData.fecha_entrega[0])[0])) / 100  )
+    // const [cometaPor, setCometaPor] = useState( dataOpereta.fecha ? Object.values(dataOpereta.fecha)[0] / 100 + 1 : Object.values(platformData.fecha_entrega[0])[0] / 100 + 1 )
     // const cometaPor = cometa / 100 + 1
 
     useEffect(()=>{
@@ -25,17 +26,34 @@ const Calculadora = ({type='text', id='', divisa='', plataforma='', setDataOpere
     useEffect(()=>{
         if (newMonto[0] == 'recibe' ) {
             setRecibir(newMonto[1] * 1)
-            setEnviar((newMonto[1] * cometaPor) )
+            setEnviar((newMonto[1] / cometaPor).toFixed(2) )
         } else if(newMonto[0] == 'envia'){
             setEnviar(newMonto[1] * 1)
-            setRecibir((newMonto[1] / cometaPor) ) 
+            setRecibir((newMonto[1] * cometaPor).toFixed(2) ) 
         }
     }, [newMonto] )
+
 
 
     useEffect(()=>{
         setDataOpereta({...dataOpereta, monto_a_enviar : enviar, monto_a_recibir : recibir})
     }, [recibir,enviar])
+
+
+    function checkCuantoDias(dias) {
+
+        var outputDate =  new Date( new Date().setDate(new Date().getDate() + 3))
+        if (outputDate.getDay() == 6) {
+            outputDate = new Date( outputDate.setDate(outputDate.getDate() + 1)) 
+        }
+        if (outputDate.getDay() == 0) {
+              outputDate = new Date( outputDate.setDate(outputDate.getDate() + 1)) 
+        }
+
+        let formatDate = new Date(outputDate).getDate()  + "/" + (new Date(outputDate).getMonth()+1) + "/" + new Date(outputDate).getFullYear()
+
+        return formatDate
+    }
 
        
   function render(){
@@ -50,7 +68,7 @@ const Calculadora = ({type='text', id='', divisa='', plataforma='', setDataOpere
                             // setDataOpereta({...operetaData, fecha: })
                             }}>
                                 {platformData.fecha_entrega.map((fecha)=>(
-                                    <option value={JSON.stringify(fecha)}>{`${Object.keys(fecha)} - ${Object.values(fecha)}%`}</option>
+                                    <option value={JSON.stringify(fecha)}>{`${checkCuantoDias(Object.keys(fecha))} - ${Object.values(fecha)}%`}</option>
                                 ))}
                             </select>
                         </div>

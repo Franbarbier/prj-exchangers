@@ -10,12 +10,17 @@ import InputField from '../../components/InputField/InputField';
 import ModalCreatePlataforma from '../../components/ModalCreatePlataforma/ModalCreatePlataforma';
 
 import {deletePlataformas} from '../../actions/plataformas';
+import ModalCreateFaq from '../../components/ModalCreateFaq/ModalCreateFaq';
+import { deleteFaqs } from '../../actions/faqs';
 
 
 const Panel = ({ setActiveTab }) => {
     
 
     const [modalCreatePlataforma, setModalCreatePlataforma] = useState(false)
+    const [modalCreateFaq, setModalCreateFaq] = useState(false)
+    const [editPlat, setEditPlat] = useState(null)
+    const [editFaq, setEditFaq] = useState(null)
 
 
     const dispatch = useDispatch()
@@ -24,9 +29,20 @@ const Panel = ({ setActiveTab }) => {
   })
 
   const plataformas = useSelector(state => state.plataformas) 
+  const faqs = useSelector(state => state.faqs) 
 
-  console.log(plataformas)
+  console.log(plataformas, faqs)
 
+  function handleEditPlat(plat) {
+    setModalCreatePlataforma(true)
+    setEditPlat(plat)
+  }
+
+
+  function handleEditFaq(faq) {
+    setModalCreateFaq(true)
+    setEditFaq(faq)
+  }
        
   function render(){
       return  <div id="Panel-view">
@@ -56,15 +72,45 @@ const Panel = ({ setActiveTab }) => {
                                     ))}
                                 </div>
                                 <div className="config-plat">
-                                        <span  onClick={()=>{ deletePlataformas([plat._id], dispatch) }} className="delete-btn">DELETE</span>
+                                        {/* <span  className="delete-btn">DELETE</span> */}
+                                        <div className='delete-faq'>
+                                            <img  onClick={()=>{ deletePlataformas([plat._id], dispatch) }} width="24px" src="/assets/delete.png"/>
+                                        </div>
+                                        <div className='edit-faq'>
+                                            <img onClick={()=> {handleEditPlat(plat)}} width="22px" src="/assets/editar.png"/>
+                                        </div>
                                 </div>
                                 
                             </li>
                         ))}
                     </ul>
+
+                    <div id="faq-tit">
+                        <h2>Editar FAQs</h2>
+                        <button onClick={()=>(setModalCreateFaq(true))} >Agregar FAQ</button>
+                    </div>
+                    <ul id="faqs">
+                        {faqs.map((faq)=>(
+                            <li>
+                                <div className='data-faq'>
+                                    <p className='preg'><b>{faq.pregunta}</b></p>
+                                    <p className='resp'>{faq.rta}</p>
+                                </div>
+                                <div className='edit-faq' onClick={()=> {handleEditFaq(faq)}}>
+                                    <img width="22px" src="/assets/editar.png"/>
+                                </div>
+                                <div  onClick={()=>{ deleteFaqs([faq._id], dispatch) }} className='delete-faq'>
+                                    <img width="24px" src="/assets/delete.png"/>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
+                {modalCreateFaq &&
+                    <ModalCreateFaq editFaq={editFaq} setEditFaq={setEditFaq} setModalCreateFaq={setModalCreateFaq} />
+                }
                 {modalCreatePlataforma &&
-                    <ModalCreatePlataforma setModalCreatePlataforma={setModalCreatePlataforma} />
+                    <ModalCreatePlataforma editPlat={editPlat} setEditPlat={setEditPlat} setModalCreatePlataforma={setModalCreatePlataforma} />
                 }
               </div>
 

@@ -38,6 +38,7 @@ html{
 #navv>div ul li{
     transition: .2s;
     cursor: pointer;
+    font-size: 18px;
 }
 #navv>div ul li:hover{
     font-weight: 600;
@@ -59,13 +60,19 @@ html{
     color: #bebebe;
     margin-bottom: 5%;
     display: block;
+    font-size: 18px;
+
 }
 #Home-view header h1{
-    font-size: 3em;
+    font-size: 4em;
+    background: linear-gradient(to right, var(--gradient1),var(--gradient2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 #Home-view header p{
     color: var(--gris1);
     margin: 10% 0;
+    font-size: 20px;
 }
 #Home-view header button:last-child{
     /* margin-left: 20px; */
@@ -73,7 +80,9 @@ html{
     border: none;
     cursor: pointer;
 }
-
+#Home-view main button{
+    font-size: 18px;
+}
 #mira-plataf{
     padding: 10%;
     box-shadow: -6px -6px 19px 0px #fff, 6px 6px 19px 0px rgba(174, 174, 192, 0.3), inset -6px -6px 7px 0px rgba(174, 174, 192, 0.2), inset 6px 6px 7px 0px #fff;
@@ -152,11 +161,11 @@ html{
                 inset 3px 3px 3px 0 rgba(174, 174, 192, 0.25), 
                 inset -3px -3px 3px 0px #fff;
     border-radius: 250px;
-}
+} 
 #steps>div p{
     margin-left: 15px;
     width: calc(100% - 90px);
-    font-size: 0.9em;
+    font-size: 18px;
 }
 
 #plataformas-cont>h3{
@@ -175,7 +184,6 @@ html{
     transition: .2s;
     cursor: pointer;
     position: relative;
-    z-index: 6;
 
 }
 #plataformas-cont>ul>li:hover .plataf-name{
@@ -194,6 +202,7 @@ html{
 }
 #plat-info{
     padding: 10% 5%;
+    font-size: 1.2em;
 }
 #plat-info>hr{
     margin: 8% auto;
@@ -234,6 +243,9 @@ html{
     font-size: 2.5em;
     margin: 25vh 0 5%;
 }
+#faq-section ul{
+    font-size: 1.2em;
+}
 #faq-section li{
     padding: 5% 0;
     border-bottom: 1px solid rgb(195, 195, 195);
@@ -266,6 +278,7 @@ html{
     background-color: #000;
     border-radius: 10px;
     top: 50%;
+    transition: .5s;
 
 }
 .icon-preg>div:first-child{
@@ -274,8 +287,11 @@ html{
 .icon-preg>div:last-child{
     transform: translateY(-3px);
 }
+.abiertus{
+    transform: translateY(-3px)!important;    
+}
 .rta{
     margin-left: calc(1em + 15px);
     padding: 0% 2%;
-    border-left: #000 solid 1px;
+    border-left: var(--gradient1) solid 1px;
 }

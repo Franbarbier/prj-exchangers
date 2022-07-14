@@ -10,7 +10,7 @@ import Boton1 from '../Boton1/Boton1';
 import Calculadora from '../Calculadora/Calculadora';
 
 
-const Checkout = ({ cometa, plataforma='',setOpenCheckout, platformData, dataOpereta, setDataOpereta, setEnviar, setRecibir}) => {
+const Checkout = ({ cometa, plataforma='',setOpenCheckout, platformData, dataOpereta, setDataOpereta, setEnviar, setRecibir, setPlatformData}) => {
     
     const [newMonto, setNewMonto] = useState(0)
     const [oficina, setOficina] = useState()
@@ -34,6 +34,24 @@ const Checkout = ({ cometa, plataforma='',setOpenCheckout, platformData, dataOpe
       return  <div className="Checkout">
                 <div>
                     <h6>Orden Nro. 5880</h6>
+                     <div className="plataf-name">
+                                <div>
+                                  <img className='plataf-icon' src={plataforma?.icon_url} />
+                                  <h4>
+                                    {plataforma.nombre}
+                                  </h4>
+                                </div>
+                                <img 
+                                  onClick={ (e)=>{ 
+                                    if(plataforma.nombre == platformData?.nombre) {
+                                        e.stopPropagation()
+                                        setPlatformData(null)
+                                        setOpenCheckout(false)
+                                     }
+                                  } } 
+                                  src="/assets/mas.png" />
+
+                              </div>
 
                    <div className="InputField">
                         <label>Nombre: </label>                        
