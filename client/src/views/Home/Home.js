@@ -91,7 +91,7 @@ const Home = ({ setActiveTab }) => {
                         <header>
                             <h1>Tu exchanger de confianza.</h1>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                            <a href="#plataformas"><Boton1 text={'Elegí tu cuenta'}/></a>
+                            <a href="#plataformas"><Boton1 text={'Encontrá tu plataforma'}/></a>
                             <a href="#faq-section"><button>Preguntas frecuentes</button></a>
                         </header>
                         <div>
@@ -183,9 +183,9 @@ const Home = ({ setActiveTab }) => {
                                 </div>
                                 <img 
                                   onClick={ (e)=>{ 
-                                    if(plataforma.nombre == platformData?.nombre) {
+                                    if(plataforma.nombre === platformData?.nombre) {
                                         e.stopPropagation()
-                                        setPlatformData(null)
+                                        setPlatformData(false)
                                         setOpenCheckout(false)
                                      }
                                   } } 

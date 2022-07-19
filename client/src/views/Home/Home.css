@@ -74,6 +74,12 @@ html{
     margin: 10% 0;
     font-size: 20px;
 }
+#Home-view header a:nth-child(3) button{
+    font-weight: 600;
+}
+#Home-view header a:nth-child(4) button{
+    transform: translateX(10%)
+}
 #Home-view header button:last-child{
     /* margin-left: 20px; */
     background: none;

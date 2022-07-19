@@ -11,17 +11,19 @@ import InputField from '../InputField/InputField';
 const Calculadora = ({type='text', id='', divisa='', plataforma='', setDataOpereta, dataOpereta, platformData, setEnviar, setRecibir, enviar=0, recibir=0}) => {
     
 
-    
     const [newMonto, setNewMonto] = useState(0)
-    const [cometaPor, setCometaPor] = useState( (100 - Number(Object.values(platformData.fecha_entrega[0])[0])) / 100  )
+    const [cometaPor, setCometaPor] = useState()
     // const [cometaPor, setCometaPor] = useState( dataOpereta.fecha ? Object.values(dataOpereta.fecha)[0] / 100 + 1 : Object.values(platformData.fecha_entrega[0])[0] / 100 + 1 )
     // const cometaPor = cometa / 100 + 1
 
     useEffect(()=>{
-        let newData = dataOpereta
-        newData.fecha = platformData.fecha_entrega[0]
-        setDataOpereta(newData)
-     }, [])
+            setCometaPor( (100 - Number(Object.values(platformData.fecha_entrega[0])[0])) / 100  )
+            
+            let newData = dataOpereta
+            newData.fecha = platformData.fecha_entrega[0]
+            setDataOpereta(newData)
+
+        }, [])
 
     useEffect(()=>{
         if (newMonto[0] == 'recibe' ) {
@@ -62,15 +64,17 @@ const Calculadora = ({type='text', id='', divisa='', plataforma='', setDataOpere
                    <div className="InputField">
                         <label>Fechas para retirarlo</label>
                         <div>
+                            {platformData?.fecha_entrega &&
                             <select onChange={(e)=>{
                                 setDataOpereta({...dataOpereta, fecha: JSON.parse(e.target.value)})
                                 setCometaPor( Object.values(JSON.parse(e.target.value)) / 100 + 1)
-                            // setDataOpereta({...operetaData, fecha: })
+                                // setDataOpereta({...operetaData, fecha: })
                             }}>
                                 {platformData.fecha_entrega.map((fecha)=>(
                                     <option value={JSON.stringify(fecha)}>{`${checkCuantoDias(Object.keys(fecha))} - ${Object.values(fecha)}%`}</option>
-                                ))}
+                                    ))}
                             </select>
+                            }
                         </div>
                         {/* <input className={tipo} type={type} value={valueSetter} onChange={ (e)=>{ setNewMonto( [tipo , e.target.value] ) }}  id={id} /> */}
                         
