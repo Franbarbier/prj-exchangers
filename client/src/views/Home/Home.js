@@ -10,6 +10,7 @@ import Boton1 from '../../components/Boton1/Boton1';
 import InputField from '../../components/InputField/InputField';
 import Calculadora from '../../components/Calculadora/Calculadora';
 import Checkout from '../../components/Checkout/Checkout';
+import { ENDPOINT } from '../../global';
 
 
 const Home = ({ setActiveTab }) => {
@@ -127,7 +128,7 @@ const Home = ({ setActiveTab }) => {
                                         }}
                                       >
                                       <div>
-                                        <img src={plataforma.icon_url} />
+                                        <img src={`${ENDPOINT}iconos/${plataforma.icon_url}`} />
                                         <p>{plataforma.nombre}</p>
                                       </div>
                                       <button>Ver más</button>

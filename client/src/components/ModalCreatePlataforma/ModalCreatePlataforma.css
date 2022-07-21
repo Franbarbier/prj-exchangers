@@ -72,7 +72,8 @@
 .date-selector>div>div{
     display: flex;
     margin-bottom: 0!important;
-}
+    align-items: center;
+  }
 .date-selector{
     position:relative;
     /* width: 20%; */

@@ -12,6 +12,7 @@ import ModalCreatePlataforma from '../../components/ModalCreatePlataforma/ModalC
 import {deletePlataformas} from '../../actions/plataformas';
 import ModalCreateFaq from '../../components/ModalCreateFaq/ModalCreateFaq';
 import { deleteFaqs } from '../../actions/faqs';
+import { ENDPOINT } from '../../global';
 
 
 const Panel = ({ setActiveTab }) => {
@@ -55,7 +56,8 @@ const Panel = ({ setActiveTab }) => {
                         {plataformas.map((plat)=>(
                             <li>
                                 <div className="img-plat">
-                                    <img src={plat.icon_url}/>
+                                    <img src={`${ENDPOINT}iconos/${plat.icon_url}`} />
+
                                 </div>
                                 <div className="nombre-plat">
                                     <h4>{plat.nombre}</h4>

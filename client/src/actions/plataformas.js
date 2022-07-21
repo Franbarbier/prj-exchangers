@@ -11,10 +11,21 @@ export const getPlataformas = (filtros=null) => async (dispatch) => {
         console.log(error.message)
     }
 }
-
+export const uploadIcon = async (archivo, dispatch) => {
+    try{
+        const{data} = await api.uploadIcon(archivo)
+        // dispatch({type: CREATE_PLATAFORMA, payload:data})
+        console.log(data)
+        return data
+    }catch(error){
+        console.log(error)
+    }
+}
 export const createPlataforma = async (plataforma, dispatch) => {
     try{
+
         const{data} = await api.createPlataforma(plataforma)
+        
         dispatch({type: CREATE_PLATAFORMA, payload:data})
         console.log(data)
         return data

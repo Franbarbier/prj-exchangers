@@ -15,8 +15,10 @@ export const getPlataformas = async (req, res)=>{
 
 export const createPlataforma = async(req, res) =>{
     
-    const platform = req.body.final_platform;
+    const platform = req.body;
+        
     const newPlatform = new Plataforma(platform);
+    
 
     try{
         await newPlatform.save();

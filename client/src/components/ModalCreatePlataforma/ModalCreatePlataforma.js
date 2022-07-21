@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 
-import { createPlataforma, updatePlataforma } from '../../actions/plataformas.js'
+import { createPlataforma, updatePlataforma, uploadIcon } from '../../actions/plataformas.js'
 
 import './ModalCreatePlataforma.css';
 
@@ -191,26 +191,48 @@ const ModalCreatePlataforma = ({ setModalCreatePlataforma, editPlat=null, setEdi
        const [nombre, setNombre] = useState(editPlat?.nombre)
        const [cantEntregas, setCantEntregas] = useState( editPlat ? editPlat.fecha_entrega : [ { 'En 3 días': 0 } ] )
 
-        // const dispatch = useDispatch()
-  
-        const dispatch = useDispatch()
+       const dispatch = useDispatch()
 
+       const [image, setImage] = useState(false)
+       const [file, setFile] = useState();
+        const [fileName, setFileName] = useState("");
+  
+        const handleFileChange = (e) => {
+          setFile(e.target.files[0]);
+          setFileName(e.target.files[0].name);
+        };
+       
 
     function handleCreatePlataforma(){
 
         let descripcion =  document.querySelector('.ProseMirror').innerHTML
         
-        let final_platform = {
-            nombre : nombre,
-            descripcion : descripcion,
-            fecha_entrega : cantEntregas
-        }
+        const formData = new FormData();
+        formData.append("fileName", fileName);
         
+        formData.append("file", file);
+        
+        let final_platform = {
+          nombre : nombre,
+          descripcion : descripcion,
+          // archivo: formData,
+          icon_url : fileName,
+          fecha_entrega : cantEntregas
+        }
         console.log( final_platform )
 
-        createPlataforma({final_platform}).then(
+        uploadIcon(formData).then(
+          (e)=> 
+            console.log(e)
+          ).catch( (e) =>{
+            console.log('error:::', e.error)
+            alert('Hubo un error al subir el icono de la plataforma :(')
+            return false;
+        } )
+
+        createPlataforma(final_platform, dispatch).then(
             (e)=> 
-            //   console.log(e)
+              // console.log(e),
               setModalCreatePlataforma(false)
             //   document.location.reload(true)
             ).catch( (e) =>{
@@ -228,10 +250,10 @@ const ModalCreatePlataforma = ({ setModalCreatePlataforma, editPlat=null, setEdi
           nombre : nombre,
           descripcion : descripcion,
           fecha_entrega : cantEntregas,
+          archivo: image,
           _id : editPlat._id
       }
       
-      console.log(edited_platform)
 
       updatePlataforma({edited_platform}, dispatch).then(
           (e)=> 
@@ -246,8 +268,17 @@ const ModalCreatePlataforma = ({ setModalCreatePlataforma, editPlat=null, setEdi
     }
 
     useEffect(()=>{
-      console.log(editPlat)
-    })
+      console.log(image)
+    },[image])
+
+    // const handleFileChange = (e) => {
+    //   const img = {
+    //     preview: URL.createObjectURL(e.target.files[0]),
+    //     data: e.target.files[0],
+    //     fileName: e.target.files[0].name
+    //   }
+    //   setImage(img)
+    // }
 
   function render(){
       return  <div id="ModalCreatePlataforma">
@@ -291,7 +322,9 @@ const ModalCreatePlataforma = ({ setModalCreatePlataforma, editPlat=null, setEdi
                             </div>
                             <div id="select-icon">
                                 <label>Elegir icono</label>
-                                <input disabled type="file" />
+                                <input onChange={(e)=>{ handleFileChange(e) }} type="file" />
+                                <br />
+                                <img src={image.preview} width="64px" />
                             </div>
                             <div className="descripcion">
                                 <label>Descripción</label>

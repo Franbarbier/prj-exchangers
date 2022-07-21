@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ENDPOINT } from '../global';
 
 // // Obtenemos el token del localStorage
 // const token = window.localStorage.getItem('token');
@@ -9,12 +10,13 @@ import axios from 'axios';
 const headers = '';
 
 // const ENDPOINT = 'http://localhost:5000/';
-const ENDPOINT = 'https://prj-calc.herokuapp.com/';
+// const ENDPOINT = 'https://prj-calc.herokuapp.com/';
 
 
 const url_plataformas = ENDPOINT+'plataformas'
 export const getPlataformas = (filtros) => axios.get(url_plataformas, {...filtros, headers});
 export const createPlataforma = (plataforma) => axios.post(url_plataformas, plataforma, {headers});
+export const uploadIcon = (archivo) => axios.post(ENDPOINT+'upload-icon', archivo);
 export const deletePlataformas = (id) => axios.delete(`${url_plataformas}/${id}`, {headers});
 export const updatePlataforma = (plataforma) => axios.patch(`${url_plataformas}/`, plataforma, {headers});
 
