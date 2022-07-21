@@ -177,7 +177,7 @@ const Home = ({ setActiveTab }) => {
                               } } >
                               <div className="plataf-name">
                                 <div>
-                                  <img className='plataf-icon' src={plataformas[0]?.icon_url} />
+                                   <img className='plataf-icon' src={`${ENDPOINT}iconos/${plataforma.icon_url}`} />
                                   <h4>
                                     {plataforma.nombre}
                                   </h4>
