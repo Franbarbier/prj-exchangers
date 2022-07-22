@@ -9,8 +9,6 @@ import { ENDPOINT } from '../global';
 // }
 const headers = '';
 
-// const ENDPOINT = 'http://localhost:5000/';
-// const ENDPOINT = 'https://prj-calc.herokuapp.com/';
 
 
 const url_plataformas = ENDPOINT+'plataformas'

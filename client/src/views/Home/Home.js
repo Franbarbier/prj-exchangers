@@ -102,7 +102,7 @@ const Home = ({ setActiveTab }) => {
                               <div >
                                 <div>
                                   <div>
-                                    <img src={plataformas[0]?.icon_url} />
+                                    <img src={`https://storage.googleapis.com/prj-calculadora/iconos/${plataformas[0]?.icon_url}`} />
                                   </div>
                                   <h3>{plataformas[0]?.nombre}</h3>
                                 </div>
@@ -128,7 +128,8 @@ const Home = ({ setActiveTab }) => {
                                         }}
                                       >
                                       <div>
-                                        <img src={`${ENDPOINT}iconos/${plataforma.icon_url}`} />
+                                        <img src={`https://storage.googleapis.com/prj-calculadora/iconos/${plataforma?.icon_url}`} />
+
                                         <p>{plataforma.nombre}</p>
                                       </div>
                                       <button>Ver más</button>
@@ -177,7 +178,7 @@ const Home = ({ setActiveTab }) => {
                               } } >
                               <div className="plataf-name">
                                 <div>
-                                   <img className='plataf-icon' src={`${ENDPOINT}iconos/${plataforma.icon_url}`} />
+                                   <img className='plataf-icon' src={`https://storage.googleapis.com/prj-calculadora/iconos/${plataforma?.icon_url}`} />
                                   <h4>
                                     {plataforma.nombre}
                                   </h4>

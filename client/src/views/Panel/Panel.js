@@ -56,7 +56,7 @@ const Panel = ({ setActiveTab }) => {
                         {plataformas.map((plat)=>(
                             <li>
                                 <div className="img-plat">
-                                    <img src={`${ENDPOINT}iconos/${plat.icon_url}`} />
+                                    <img src={`https://storage.googleapis.com/prj-calculadora/iconos/${plat.icon_url}`} />
 
                                 </div>
                                 <div className="nombre-plat">

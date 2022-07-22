@@ -15,7 +15,6 @@ export const uploadIcon = async (archivo, dispatch) => {
     try{
         const{data} = await api.uploadIcon(archivo)
         // dispatch({type: CREATE_PLATAFORMA, payload:data})
-        console.log(data)
         return data
     }catch(error){
         console.log(error)

@@ -4,6 +4,7 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 import multer from 'multer'
 
+import {Storage} from '@google-cloud/storage'
 
 import plataformasRoutes from './routes/plataformas.js';
 import faqsRoutes from './routes/faqs.js';
@@ -25,28 +26,43 @@ app.use('/plataformas', plataformasRoutes)
 app.use('/faqs', faqsRoutes)
 
 
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'iconos/')
-    },
-    filename: function (req, file, cb) {
-      cb(null, file.originalname)
-    }
-  })
-   
-var upload = multer({ storage: storage })
+const gc = new Storage({
+  keyFilename: "pivotal-leaf-190722-1453958d93f5.json",
+  projectId : "pivotal-leaf-190722"
+})
 
-app.post('/upload-icon', upload.single('file'), (req, res, next) => {
-    const file = req.file
-    console.log(file)
-    if (!file) {
-      const error = new Error('Please upload a file')
-      error.httpStatusCode = 400
-      return next(error)
-    }
-    //   res.send(file)
-    
-  })
+const googleBucket = gc.bucket("prj-calculadora")
+
+const multerVar = new multer({
+  storage: multer.memoryStorage(),
+});
+// Display a form for uploading files.
+app.get('/', (req, res) => {
+  res.render('form.pug');
+});
+
+app.post('/upload-icon', multerVar.single('file'), (req, res, next) => {
+  if (!req.file) {
+    res.status(400).send('No file uploaded.');
+    return;
+  }
+  // Create a new blob in the bucket and upload the file data.
+  const blob = googleBucket.file('iconos/'+req.file.originalname);
+  const blobStream = blob.createWriteStream();
+  console.log('iconos/'+req.file.originalname )
+
+  blobStream.on('error', err => {
+    next(err);
+  });
+
+  blobStream.on('finish', () => {  
+  res.status(200).send(req.file.originalname);
+  });
+  
+  blobStream.end(req.file.buffer);
+  res.status(200);
+});
+
 
 app.get('/', (req, res) => {
     res.set('Access-Control-Allow-Origin', '*');

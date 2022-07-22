@@ -98,6 +98,7 @@ html{
 }
 #mira-plataf h3{
     margin-left: 10px;
+    font-weight: 400;
     font-size: 1.5em;
 }
 #mira-plataf>div, #mira-plataf>div>div, #mira-plataf li a, #mira-plataf li a>div{

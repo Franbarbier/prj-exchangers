@@ -191,12 +191,18 @@ const ModalCreatePlataforma = ({ setModalCreatePlataforma, editPlat=null, setEdi
        const [nombre, setNombre] = useState(editPlat?.nombre)
        const [cantEntregas, setCantEntregas] = useState( editPlat ? editPlat.fecha_entrega : [ { 'En 3 días': 0 } ] )
 
+       const [guardando, setGuardando] = useState(false)
+
        const dispatch = useDispatch()
 
        const [image, setImage] = useState(false)
        const [file, setFile] = useState();
-        const [fileName, setFileName] = useState("");
+       const [fileName, setFileName] = useState("");
   
+       useEffect(()=>{
+        setFileName(editPlat?.icon_url)
+      },[])
+
         const handleFileChange = (e) => {
           setFile(e.target.files[0]);
           setFileName(e.target.files[0].name);
@@ -212,33 +218,55 @@ const ModalCreatePlataforma = ({ setModalCreatePlataforma, editPlat=null, setEdi
         
         formData.append("file", file);
         
+        var newFileName;
+        if (fileName || fileName != "") {
+          newFileName = fileName
+        }else{
+          newFileName = 'logo-chico.png'
+        }
+
         let final_platform = {
           nombre : nombre,
           descripcion : descripcion,
           // archivo: formData,
-          icon_url : fileName,
+          icon_url : newFileName,
           fecha_entrega : cantEntregas
         }
         console.log( final_platform )
 
+        setGuardando(true)
         uploadIcon(formData).then(
           (e)=> 
-            console.log(e)
+            console.log(e),
+            setTimeout(() => {
+              createPlataforma(final_platform, dispatch).then(
+                  (e)=> 
+                    // console.log(e),
+                setGuardando(false),
+                setModalCreatePlataforma(false)
+              //   document.location.reload(true)
+              ).catch( (e) =>{
+                console.log('error:::', e.error)
+       
+            } )
+              }, 200)
+
+
           ).catch( (e) =>{
             console.log('error:::', e.error)
             alert('Hubo un error al subir el icono de la plataforma :(')
             return false;
         } )
 
-        createPlataforma(final_platform, dispatch).then(
-            (e)=> 
-              // console.log(e),
-              setModalCreatePlataforma(false)
-            //   document.location.reload(true)
-            ).catch( (e) =>{
-              console.log('error:::', e.error)
+        // createPlataforma(final_platform, dispatch).then(
+        //     (e)=> 
+        //       // console.log(e),
+        //       setModalCreatePlataforma(false)
+        //     //   document.location.reload(true)
+        //     ).catch( (e) =>{
+        //       console.log('error:::', e.error)
      
-          } )
+        //   } )
     }
 
 
@@ -246,39 +274,60 @@ const ModalCreatePlataforma = ({ setModalCreatePlataforma, editPlat=null, setEdi
 
       let descripcion =  document.querySelector('.ProseMirror').innerHTML
       
+      
+
       let edited_platform = {
           nombre : nombre,
           descripcion : descripcion,
           fecha_entrega : cantEntregas,
           archivo: image,
+          icon_url : fileName,
           _id : editPlat._id
       }
-      
 
-      updatePlataforma({edited_platform}, dispatch).then(
-          (e)=> 
-          //   console.log(e)
-            setModalCreatePlataforma(false),
-            setEditPlat(null)
-          //   document.location.reload(true)
-          ).catch( (e) =>{
-            console.log('error:::', e.error)
+      const formData = new FormData();
+        formData.append("fileName", fileName);
+        
+        formData.append("file", file);
+      
+      uploadIcon(formData).then(
+        (e)=> 
+          console.log(e),
+          setTimeout(() => {
+            updatePlataforma({edited_platform}, dispatch).then(
+              (e)=> 
+              // console.log(e),
+              setGuardando(false),
+              setModalCreatePlataforma(false)
+              //   document.location.reload(true)
+              ).catch( (e) =>{
+                console.log('error:::', e.error)
+                
+              } )
+              
+            }, 200)
+
+        ).catch( (e) =>{
+          console.log('error:::', e.error)
+          alert('Hubo un error al subir el icono de la plataforma :(')
+          return false;
+      } )
+
+      // updatePlataforma({edited_platform}, dispatch).then(
+      //     (e)=> 
+      //     //   console.log(e)
+      //       setModalCreatePlataforma(false),
+      //       setEditPlat(null)
+      //     //   document.location.reload(true)
+      //     ).catch( (e) =>{
+      //       console.log('error:::', e.error)
    
-        } )
+      //   } )
     }
 
-    useEffect(()=>{
-      console.log(image)
-    },[image])
+    
 
-    // const handleFileChange = (e) => {
-    //   const img = {
-    //     preview: URL.createObjectURL(e.target.files[0]),
-    //     data: e.target.files[0],
-    //     fileName: e.target.files[0].name
-    //   }
-    //   setImage(img)
-    // }
+    
 
   function render(){
       return  <div id="ModalCreatePlataforma">
@@ -338,9 +387,9 @@ const ModalCreatePlataforma = ({ setModalCreatePlataforma, editPlat=null, setEdi
                                               setEditPlat(null)
                                           }}>Descartar</button>
                     {editPlat ? 
-                      <button id="edit-plat" onClick={ handleEditPlataforma }>Guardar</button>
+                      <button id="edit-plat" onClick={ handleEditPlataforma }>{guardando ? "Guardando" : "Guardar" }</button>
                     :
-                      <button id="crear-plat" onClick={ handleCreatePlataforma }>Crear</button>
+                      <button id="crear-plat" onClick={ handleCreatePlataforma }>{guardando ? "Guardando" : "Crear" }</button>
                     }
                     </div>
 

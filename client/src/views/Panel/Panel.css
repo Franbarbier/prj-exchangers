@@ -39,10 +39,12 @@
 
 .img-plat{
     width: 36px;
-    /* height: 48PX; */
+    height: 36px;
 }
 .img-plat img{
     width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 .nombre-plat{
     width: 25%;

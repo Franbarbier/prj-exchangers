@@ -5,7 +5,7 @@ const plataforma = mongoose.Schema({
     nombre: String,
     icon_url : {
         type: String,
-        default: '/assets/logo-chico.png'
+        default: 'logo-chico.png'
     },
     comision: Number,
     descripcion: String,
