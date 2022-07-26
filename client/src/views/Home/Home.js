@@ -301,7 +301,7 @@ const Home = ({ setActiveTab }) => {
                                   <motion.div className="rta"
                                     initial={{y : -20, opacity:0}}
                                     animate={{y : 0, opacity:1}}
-                                    trnasition={{ duration : 0.7 }}
+                                    transition={{ duration : 0.7 }}
                                   >
                                       <p>{faq.rta}</p>
                                   </motion.div>

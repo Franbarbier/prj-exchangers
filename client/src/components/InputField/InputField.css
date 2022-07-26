@@ -38,3 +38,11 @@ input::-webkit-inner-spin-button {
     color: #000;
     font-weight: 900;
 }
+
+@media (max-width: 800px){
+
+.InputField{
+    margin: 5vh 0;
+}
+
+}

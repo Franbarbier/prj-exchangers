@@ -78,3 +78,30 @@ body{
 .extra-info p{
     text-align: center;
 }
+
+@media (max-width: 800px){
+
+.Checkout{
+    padding: 15vh 5% 0;
+    width: 90%;
+}
+.Checkout .InputField{
+    margin: 5vh 0;
+}
+.Checkout>div>div:last-child {
+    margin-top: 8%;
+    display: flex;
+    align-items: center;
+    padding: 7% 0;
+}
+.Checkout .toggler{
+    display: block;
+}
+.toggler .toggle-option{
+    margin: 5% 0;
+}
+.extra-info{
+    left: 0%;
+}
+
+}

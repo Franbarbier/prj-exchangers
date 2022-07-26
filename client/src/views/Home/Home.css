@@ -302,3 +302,51 @@ html{
     padding: 0% 2%;
     border-left: var(--gradient1) solid 1px;
 }
+
+
+@media (max-width: 800px){
+#Home-view main{
+    flex-direction: column;
+}
+#Home-view main header{
+    width: 100%;
+    padding-top: 15vh;
+}
+#Home-view main header h1{
+    font-size: 3.5em;
+}
+.main-cont{
+    width: 90%;
+}
+#Home-view main header a{
+    display: block;
+    margin: 15% 0;
+}
+#Home-view main>div{
+    width: 100%;
+}
+#steps{
+    display: block;
+    padding: 10vh 0;
+}
+#steps>div{
+    width: 100%;
+    margin: 15% 0;
+}
+#faq-section{
+    padding-bottom: 15vh;
+}
+#faq-section h6{
+    font-size: 1.1em;
+}
+#faq-section li p{
+    font-size: 0.9em;
+}
+.icon-preg{
+    width: 2em;
+    height: 2em;
+    margin-right: 5px;
+}
+
+
+}

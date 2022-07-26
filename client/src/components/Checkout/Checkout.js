@@ -65,7 +65,8 @@ const Checkout = ({ cometa, plataforma='',setOpenCheckout, platformData, dataOpe
                     <h6>Orden Nro. 5880</h6>
                      <div className="plataf-name">
                                 <div>
-                                  <img className='plataf-icon' src={plataforma?.icon_url} />
+                                  <img className='plataf-icon' src={`https://storage.googleapis.com/prj-calculadora/iconos/${plataforma?.icon_url}`} />
+
                                   <h4>
                                     {plataforma.nombre}
                                   </h4>
