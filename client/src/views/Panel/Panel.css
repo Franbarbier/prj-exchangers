@@ -103,15 +103,43 @@
     margin-top: 30vh;
     margin-bottom: 10vh;
 }
-#faqs li{
+#faqs{
+    margin-bottom: 10%;
+}
+#faqs li, #wpps li{
     margin: 2% 0;
     padding: 2% 0;
     display: flex;
     border-bottom: 1px solid #b5b5b5 ;
 }
+#faqs li:last-child, #wpps li:last-child, #actual-platform li:last-child{
+    border: none;
+}
 
-.data-faq{
+.data-faq, .data-wpp{
     width: 80%;
+}
+.data-wpp{
+    display: flex;
+    align-items: center;
+}
+.data-wpp>p{
+    margin-right: 5%;
+}
+.data-wpp button{
+    cursor: pointer;
+    background: linear-gradient(to right, var(--gradient1), var(--gradient2));
+    color: white;
+    padding: 8px 25px;
+    border: none;
+    border-radius: 5px;
+    transition: .2s;
+}
+.data-wpp button:hover{
+    opacity: 0.7;
+}
+.data-wpp button:focus{
+    transform: scale(0.95)
 }
 .edit-faq, .delete-faq{
     cursor: pointer;
@@ -136,4 +164,9 @@ li:hover .delete-faq{
   }
   .resp{
     margin-top: 2%;
+  }
+
+  #wpp-tit{
+    margin-top: 30vh;
+    margin-bottom: 10vh;
   }

@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 
 import { getPlataformas } from '../actions/plataformas';
 import { getFaqs } from '../actions/faqs';
+import { getWpps } from '../actions/wpps';
 
 
 const AppContext = React.createContext();
@@ -16,10 +17,11 @@ export function AppProvider(props){
     
     const [loadingPlataformas, setLoadingPlataformas] = useState(false) 
     const [loadingFaqs, setLoadingFaqs] = useState(false) 
+    const [loadingWpps, setLoadingWpps] = useState(false) 
     
     const [notifications, setNotifications] = useState([])
     
-    const setters = [setLoadingPlataformas, setLoadingFaqs]
+    const setters = [setLoadingPlataformas, setLoadingFaqs, setLoadingWpps]
 
     
     useEffect(()=>{
@@ -31,7 +33,8 @@ export function AppProvider(props){
         if(!window.location.href.includes('login')){
             setAllLoading(true)
            dispatch(getPlataformas()).then(()=>setLoadingPlataformas(false))   
-           dispatch(getFaqs()).then(()=>setLoadingFaqs(false))   
+           dispatch(getFaqs()).then(()=>setLoadingFaqs(false))
+           dispatch(getWpps()).then(()=>setLoadingWpps(false))
         //    getPlataformas().then(()=>setLoadingPlataformas(false))
         }
     }, [pathname])
@@ -44,11 +47,11 @@ export function AppProvider(props){
 
     const value = useMemo(()=>{
         return ({
-            loading: {plataformas: loadingPlataformas, faqs: loadingFaqs},
+            loading: {plataformas: loadingPlataformas, faqs: loadingFaqs, wpps: loadingWpps},
             notifications,
             setNotifications
         })
-    }, [loadingPlataformas, loadingFaqs, notifications])
+    }, [loadingPlataformas, loadingFaqs, loadingWpps, notifications])
 
     return <AppContext.Provider value={value} {...props} />
 

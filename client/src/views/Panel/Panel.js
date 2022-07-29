@@ -12,7 +12,8 @@ import ModalCreatePlataforma from '../../components/ModalCreatePlataforma/ModalC
 import {deletePlataformas} from '../../actions/plataformas';
 import ModalCreateFaq from '../../components/ModalCreateFaq/ModalCreateFaq';
 import { deleteFaqs } from '../../actions/faqs';
-import { ENDPOINT } from '../../global';
+import ModalCreateWpp from '../../components/ModalCreateWpp/ModalCreateWpp';
+import { deleteWpps } from '../../actions/wpps';
 
 
 const Panel = ({ setActiveTab }) => {
@@ -20,8 +21,10 @@ const Panel = ({ setActiveTab }) => {
 
     const [modalCreatePlataforma, setModalCreatePlataforma] = useState(false)
     const [modalCreateFaq, setModalCreateFaq] = useState(false)
+    const [modalCreateWpp, setModalCreateWpp] = useState(false)
     const [editPlat, setEditPlat] = useState(null)
     const [editFaq, setEditFaq] = useState(null)
+    const [editWpp, setEditWpp] = useState(null)
 
 
     const dispatch = useDispatch()
@@ -30,7 +33,9 @@ const Panel = ({ setActiveTab }) => {
   })
 
   const plataformas = useSelector(state => state.plataformas) 
-  const faqs = useSelector(state => state.faqs) 
+  const faqs = useSelector(state => state.faqs)
+  const wpps = useSelector(state => state.wpps)
+//   const wpps = []
 
   console.log(plataformas, faqs)
 
@@ -39,6 +44,10 @@ const Panel = ({ setActiveTab }) => {
     setEditPlat(plat)
   }
 
+  function handleEditWpp(wpp) {
+    setModalCreateWpp(true)
+    setEditWpp(wpp)
+  }
 
   function handleEditFaq(faq) {
     setModalCreateFaq(true)
@@ -86,7 +95,7 @@ const Panel = ({ setActiveTab }) => {
                             </li>
                         ))}
                     </ul>
-
+                    <hr />
                     <div id="faq-tit">
                         <h2>Editar FAQs</h2>
                         <button onClick={()=>(setModalCreateFaq(true))} >Agregar FAQ</button>
@@ -107,9 +116,37 @@ const Panel = ({ setActiveTab }) => {
                             </li>
                         ))}
                     </ul>
+                <hr />
+                    <div id="wpp-tit">
+                        <h2>Editar lineas de Whatsapp</h2>
+                        <button onClick={()=>(setModalCreateWpp(true))} >Agregar WPP</button>
+                    </div>
+                    <ul id="wpps">
+                    {wpps.map((wpp)=>(
+                            <li>
+                                <div className='data-wpp'>
+                                    <p className='vendedor'><b>{wpp.vendedor}</b></p>
+                                    <p className='numero'>{wpp.numero}</p>
+                                    <button className='copylink'
+                                        onClick={(e)=>{  navigator.clipboard.writeText('https://sweet-sherbet-fbb6f1.netlify.app/?'+wpp.vendedor+'&'+wpp.numero); }}
+                                    >COPIAR LINK</button>
+                                </div>
+                                <div className='edit-faq' onClick={()=> {handleEditWpp(wpp)}}>
+                                    <img width="22px" src="/assets/editar.png"/>
+                                </div>
+                                <div  onClick={()=>{ deleteWpps([wpp._id], dispatch) }} className='delete-faq'>
+                                    <img width="24px" src="/assets/delete.png"/>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
+
                 {modalCreateFaq &&
                     <ModalCreateFaq editFaq={editFaq} setEditFaq={setEditFaq} setModalCreateFaq={setModalCreateFaq} />
+                }
+                {modalCreateWpp &&
+                    <ModalCreateWpp editWpp={editWpp} setEditWpp={setEditWpp} setModalCreateWpp={setModalCreateWpp} />
                 }
                 {modalCreatePlataforma &&
                     <ModalCreatePlataforma editPlat={editPlat} setEditPlat={setEditPlat} setModalCreatePlataforma={setModalCreatePlataforma} />

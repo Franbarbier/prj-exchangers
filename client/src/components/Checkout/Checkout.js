@@ -16,6 +16,8 @@ const Checkout = ({ cometa, plataforma='',setOpenCheckout, platformData, dataOpe
     const [newMonto, setNewMonto] = useState(0)
     const [hovered, setHovered] = useState(false)
     const [oficina, setOficina] = useState()
+    const [linea, setLinea] = useState()
+    const [vendedor, setVendedor] = useState()
     const cometaPor = cometa / 100 + 1
     const [linkWpp, setLinkWpp] = useState()
     
@@ -48,12 +50,29 @@ const Checkout = ({ cometa, plataforma='',setOpenCheckout, platformData, dataOpe
     
     ]
     
-    var linea = '5491134536136'
+    // var linea = '5491134536136'
 
   
     useEffect(()=>{
-        console.log(linkWpp)
-    }, [linkWpp])
+        var mySubString = window.location.href.substring(
+            window.location.href.indexOf("?") + 1, 
+            window.location.href.lastIndexOf("&")
+        );
+        
+        console.log(mySubString)
+        if(mySubString != ''){
+            setVendedor(mySubString)
+        }else{
+            setVendedor('PRJ')
+        }
+
+
+        if(window.location.href.split('&')[1] != ''){
+            setLinea(window.location.href.split('&')[1])
+        }else{
+            setLinea('5491134536137')
+        }
+    }, [])
 
     useEffect(()=>{
         setDataOpereta({...dataOpereta, oficina: oficina})
@@ -139,15 +158,17 @@ const Checkout = ({ cometa, plataforma='',setOpenCheckout, platformData, dataOpe
                         <a onClick={ ()=> {setOpenCheckout(false)} }>
                             <Boton1 text={"Volver"} />
                         </a>
+                        {/* <Link
+                            
+                            to={`https://wa.me/${linea}?text=*Nombre:*%20${dataOpereta.nombre}%0a%0a*Quién retira:*%20${dataOpereta.retira}%0a%0a*Oficina:*%20${dataOpereta.oficina}%0a%0a*Plataforma:*%20${dataOpereta.platform}%0a%0a*Día:*%20${Object.values(dataOpereta.fecha)[0]}%0a%0a*Monto a enviar:*%20${dataOpereta.monto_a_enviar}%0a%0a*Monto a recibir:*%20${dataOpereta.monto_a_recibir}`} >
+                            Confirmar Operación
+                        </Link> */}
                         <a
-                            target='_blank'
-
-                            href={`wa.me/${linea}?text=*Nombre:*%20${dataOpereta.nombre}%0a%0a*Quién retira:*%20${dataOpereta.retira}%0a%0a*Oficina:*%20${dataOpereta.oficina}%0a%0a*Plataforma:*%20${dataOpereta.platform}%0a%0a*Día:*%20${Object.values(dataOpereta.fecha)[0]}%0a%0a*Monto a enviar:*%20${dataOpereta.monto_a_enviar}%0a%0a*Monto a recibir:*%20${dataOpereta.monto_a_recibir}
-                            `}
+                            onClick={ ()=> window.open(`https://wa.me/${linea}?text=Hola ${vendedor}! Quería realizar la siguiente operación:%0a%0a%0a*Nombre:*%20${dataOpereta.nombre}%0a%0a*Oficina:*%20${dataOpereta.oficina}%0a%0a*Plataforma:*%20${dataOpereta.platform}%0a%0a*Día:*%20${Object.values(dataOpereta.fecha)[0]}%0a%0a*Monto a enviar:*%20${dataOpereta.monto_a_enviar}%0a%0a*Monto a recibir:*%20${dataOpereta.monto_a_recibir}`, '_blank').focus() }
 
                         >
-                            <Boton1 text={"Confirmar operación"} />
-                        </a>
+                            <Boton1 text={"Confirmar operación"} /> 
+                         </a>
 
                     </div>
                  
