@@ -43,8 +43,13 @@ const Calculadora = ({type='text', id='', divisa='', plataforma='', setDataOpere
 
 
     function checkCuantoDias(dias) {
-
-        var outputDate =  new Date( new Date().setDate(new Date().getDate() + 3))
+        var matches = dias[0].replace(/\D/g,'')
+        var date = 0;
+        if ( matches != '') {
+            date = Number(matches)
+        }
+        console.log(date)
+        var outputDate =  new Date( new Date().setDate(new Date().getDate() + date))
         if (outputDate.getDay() == 6) {
             outputDate = new Date( outputDate.setDate(outputDate.getDate() + 1)) 
         }

@@ -9,6 +9,7 @@ import StarterKit from '@tiptap/starter-kit'
 import { createPlataforma, updatePlataforma, uploadIcon } from '../../actions/plataformas.js'
 
 import './ModalCreatePlataforma.css';
+import Entregas from './FechasEntrega/FechasEntrega.js';
 
 
 const MenuBar = ({ editor }) => {
@@ -133,54 +134,6 @@ const Tiptap = ({editPlat}) => {
 
 
 
-  const Entregas = ({ setDiasUl, diasUl, dia, indexY,cantEntregas, setCantEntregas }) => {
-    const fechasEntrega = ['En el día', '2 días', '3 días', '4 días', '5 días', '6 días']
-
-    const [diaSelected, setDiaSelected] = useState(Object.keys(dia))
-    const [cometaSelected, setCometaSelected] = useState(Object.values(dia))
-
-    var indez = 0;
-    useEffect(()=>{
-        indez = indexY
-        console.log(indez)
-    }, [])
-  
-    useEffect(()=>{
-        
-        setDiasUl(false)
-
-        let newCantEntregas = cantEntregas
-        newCantEntregas[0] = {[diaSelected] : cometaSelected}
-
-        setCantEntregas(newCantEntregas)
-        
-    }, [diaSelected, cometaSelected])
-    
-
-    function cambiarFecha(fecha) {
-        // let newCantEntregas = cantEntregas
-        // newCantEntregas[indexY] = {[diaSelected] : cometaSelected[0]}
-        
-        // setDiaSelected(fecha)
-        // setCantEntregas(newCantEntregas)
-    }
-
-    return (
-        <div id={indexY}>
-            <div>
-                <span onClick={()=>{ setDiasUl(!diasUl) }}>{diaSelected}</span>
-                <input onChange={(e)=>{setCometaSelected(e.target.value)}} type="number" value={cometaSelected} placeholder="Comisión"/>%
-            </div>
-            { diasUl &&
-                <ul>
-                    {fechasEntrega.map((fecha)=>(
-                        <li onClick={ ()=>{setDiaSelected(fecha)} }>{fecha}</li>
-                    ))}
-                </ul>
-            }
-        </div>
-    )
-  }
 
 
 const ModalCreatePlataforma = ({ setModalCreatePlataforma, editPlat=null, setEditPlat }) => {
@@ -189,7 +142,7 @@ const ModalCreatePlataforma = ({ setModalCreatePlataforma, editPlat=null, setEdi
        // const setTipo = tipo
        const [diasUl, setDiasUl] = useState(false)
        const [nombre, setNombre] = useState(editPlat?.nombre)
-       const [cantEntregas, setCantEntregas] = useState( editPlat ? editPlat.fecha_entrega : [ { 'En 3 días': 0 } ] )
+       const [cantEntregas, setCantEntregas] = useState( editPlat ? editPlat.fecha_entrega : [ { '3 días': 0 } ] )
 
        const [guardando, setGuardando] = useState(false)
 
@@ -361,7 +314,10 @@ const ModalCreatePlataforma = ({ setModalCreatePlataforma, editPlat=null, setEdi
                                 }
 
                                 {/* <button onClick={()=>{ setCantEntregas([...cantEntregas, {'En 8 días': 0} ]) }}> */}
-                                <button onClick={(e)=>{ e.preventDefault() }}>
+                                <button onClick={(e)=>{
+                                            setCantEntregas([...cantEntregas, {'3 días': 0} ])
+                                            e.preventDefault()
+                                          }}>
                                     <span>+</span>
                                     <p>Agregar otra opción</p>
                                 </button>
