@@ -77,6 +77,26 @@ const Checkout = ({ cometa, plataforma='',setOpenCheckout, platformData, dataOpe
     useEffect(()=>{
         setDataOpereta({...dataOpereta, oficina: oficina})
     }, [oficina])
+
+    function checkCuantoDias(dias) {
+        var matches = dias[0].replace(/\D/g,'')
+        var date = 0;
+        if ( matches != '') {
+            date = Number(matches)
+        }
+        console.log(date)
+        var outputDate =  new Date( new Date().setDate(new Date().getDate() + date))
+        if (outputDate.getDay() == 6) {
+            outputDate = new Date( outputDate.setDate(outputDate.getDate() + 1)) 
+        }
+        if (outputDate.getDay() == 0) {
+              outputDate = new Date( outputDate.setDate(outputDate.getDate() + 1)) 
+        }
+
+        let formatDate = new Date(outputDate).getDate()  + "/" + (new Date(outputDate).getMonth()+1) + "/" + new Date(outputDate).getFullYear()
+
+        return formatDate
+    }
        
   function render(){
       return  <div className="Checkout">
@@ -164,7 +184,7 @@ const Checkout = ({ cometa, plataforma='',setOpenCheckout, platformData, dataOpe
                             Confirmar Operación
                         </Link> */}
                         <a
-                            onClick={ ()=> window.open(`https://wa.me/${linea}?text=Hola ${vendedor}! Quería realizar la siguiente operación:%0a%0a%0a*Nombre:*%20${dataOpereta.nombre}%0a%0a*Oficina:*%20${dataOpereta.oficina}%0a%0a*Plataforma:*%20${dataOpereta.platform}%0a%0a*Día:*%20${Object.values(dataOpereta.fecha)[0]}%0a%0a*Monto a enviar:*%20${dataOpereta.monto_a_enviar}%0a%0a*Monto a recibir:*%20${dataOpereta.monto_a_recibir}`, '_blank').focus() }
+                            onClick={ ()=> window.open(`https://wa.me/${linea}?text=Hola ${vendedor}! Quería realizar la siguiente operación:%0a%0a%0a*Nombre:*%20${dataOpereta.nombre}%0a%0a*Oficina:*%20${dataOpereta.oficina}%0a%0a*Plataforma:*%20${dataOpereta.platform}%0a%0a*Día:*%20${checkCuantoDias(Object.values(dataOpereta.fecha)[0])}%0a%0a*Monto a enviar:*%20${dataOpereta.monto_a_enviar}%0a%0a*Monto a recibir:*%20${dataOpereta.monto_a_recibir}`, '_blank').focus() }
 
                         >
                             <Boton1 text={"Confirmar operación"} /> 

@@ -39,13 +39,6 @@ import { motion, AnimatePresence } from "framer-motion";
       console.log(cometaSelected)
     })
 
-    function cambiarFecha(fecha) {
-        // let newCantEntregas = cantEntregas
-        // newCantEntregas[indexY] = {[diaSelected] : cometaSelected[0]}
-        
-        // setDiaSelected(fecha)
-        // setCantEntregas(newCantEntregas)
-    }
 
     return (
         <div id={indexY}>
