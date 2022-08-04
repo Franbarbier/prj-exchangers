@@ -220,3 +220,19 @@
   #rene-plat:hover{
     background-color: #ddd;
   }
+.deleteEntrega{
+  width: 24px;
+  cursor: pointer;
+  filter: invert(0.3);
+  transition: .2s;
+  margin-left: 20px;
+  margin-bottom: 0!important;
+
+}
+.deleteEntrega:hover{
+  filter: invert(0)
+}
+.deleteEntrega img{
+  width: 100%;
+  display: block;
+}

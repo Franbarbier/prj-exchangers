@@ -142,7 +142,8 @@ const ModalCreatePlataforma = ({ setModalCreatePlataforma, editPlat=null, setEdi
        // const setTipo = tipo
        const [diasUl, setDiasUl] = useState(false)
        const [nombre, setNombre] = useState(editPlat?.nombre)
-       const [cantEntregas, setCantEntregas] = useState( editPlat ? editPlat.fecha_entrega : [ { '3 días': 0 } ] )
+      //  const [cantEntregas, setCantEntregas] = useState( editPlat ? editPlat.fecha_entrega : [ '' ] )
+       const [cantEntregas, setCantEntregas] = useState()
 
        const [guardando, setGuardando] = useState(false)
 
@@ -153,9 +154,18 @@ const ModalCreatePlataforma = ({ setModalCreatePlataforma, editPlat=null, setEdi
        const [fileName, setFileName] = useState("");
   
        useEffect(()=>{
-        setFileName(editPlat?.icon_url)
-      },[])
+         setFileName(editPlat?.icon_url)
+         if (editPlat) {
+          setCantEntregas(editPlat.fecha_entrega)
+         }else{
+          setCantEntregas( [ { '3 días': 0 } ])
+         }
+        },[])
 
+        useEffect(()=>{
+          console.log(cantEntregas)
+         })
+ 
         const handleFileChange = (e) => {
           setFile(e.target.files[0]);
           setFileName(e.target.files[0].name);
@@ -278,6 +288,12 @@ const ModalCreatePlataforma = ({ setModalCreatePlataforma, editPlat=null, setEdi
       //   } )
     }
 
+    // function deleteForma(indexY) {
+    //   let newCantEntregas = cantEntregas
+    //   newCantEntregas.splice(indexY,1)
+    //   console.log(cantEntregas, newCantEntregas)
+    //   // setCantEntregas(newCantEntregas)
+    // }
     
 
     
@@ -295,23 +311,24 @@ const ModalCreatePlataforma = ({ setModalCreatePlataforma, editPlat=null, setEdi
                             </div>
                             <div className="diaEntrega">
                                 <label>Fechas de entrega</label>
-                                {editPlat ?
-                                <div>
+                                {/* {editPlat ? */}
+                                {/* <div>
                                     <div className="date-selector">
                                         {editPlat.fecha_entrega.map((dia, index)=>(
                                           <Entregas editEntregas={dia.fecha_entrega} cantEntregas={cantEntregas} setCantEntregas={setCantEntregas} dia={dia} indexY={index} setDiasUl={setDiasUl} diasUl={diasUl} />
                                           ))}
                                     </div>
-                                </div>
-                                :
+                                </div> */}
+                                {/* // : */}
                                 <div>
                                     <div className="date-selector">
-                                        {cantEntregas.map((dia, index)=>(
+
+                                        {cantEntregas?.map((dia, index)=>(
                                           <Entregas cantEntregas={cantEntregas} setCantEntregas={setCantEntregas} dia={dia} indexY={index} setDiasUl={setDiasUl} diasUl={diasUl} />
                                           ))}
                                     </div>
                                 </div>
-                                }
+                                {/* // } */}
 
                                 {/* <button onClick={()=>{ setCantEntregas([...cantEntregas, {'En 8 días': 0} ]) }}> */}
                                 <button onClick={(e)=>{

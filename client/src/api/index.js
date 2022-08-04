@@ -2,12 +2,12 @@ import axios from 'axios';
 import { ENDPOINT } from '../global';
 
 // // Obtenemos el token del localStorage
-// const token = window.localStorage.getItem('token');
+const token = window.localStorage.getItem('token');
 
-// const headers = {
-//     'Authorization': `Bearer ${token}`
-// }
-const headers = '';
+const headers = {
+    'Authorization': `Bearer ${token}`
+}
+// const headers = '';
 
 
 
@@ -33,3 +33,15 @@ export const createWpp = (wpp) => axios.post(url_wpps, wpp, {headers});
 export const deleteWpps = (id) => axios.delete(`${url_wpps}/${id}`, {headers});
 export const updateWpp = (wpp) => axios.patch(`${url_wpps}/`, wpp, {headers});
 
+
+const url_users = ENDPOINT+'users'
+export const login = (user) => axios.post(`${url_users}/login`, user);
+
+export const verifyUser = async (id) => {
+
+    var res = await fetch(`${url_users}/verify`, {method: 'GET', headers})
+    .then(response => response.json())
+    .then(data => data);
+
+    return res
+}

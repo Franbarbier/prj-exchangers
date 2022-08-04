@@ -13,3 +13,5 @@ export const CREATE_WPP = 'CREATE_WPP'
 export const DELETE_WPPS = 'DELETE_WPPS'
 export const FETCH_ALL_WPPS = 'FETCH_ALL_WPPS'
 export const UPDATE_WPP = 'UPDATE_WPP'
+
+export const LOGIN = 'LOGIN'

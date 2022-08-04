@@ -9,6 +9,7 @@ import {Storage} from '@google-cloud/storage'
 import plataformasRoutes from './routes/plataformas.js';
 import faqsRoutes from './routes/faqs.js';
 import wppsRoutes from './routes/wpps.js';
+import usersRoutes from './routes/users.js';
 
 // import { verifyToken } from './auth.js';
 
@@ -25,6 +26,7 @@ app.use(cors({
 
 app.use('/plataformas', plataformasRoutes)
 app.use('/faqs', faqsRoutes)
+app.use('/users', usersRoutes)
 app.use('/wpps', wppsRoutes)
 
 
