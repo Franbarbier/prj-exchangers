@@ -42,7 +42,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
     function deleteForma() {
       // let newCantEntregas = cantEntregas
-      // newCantEntregas.splice(indexY,1)
+      //ne wCantEntregas.splice(indexY,1)
       // console.log(cantEntregas, newCantEntregas)
 
       let left = cantEntregas.slice(0, indexY);   // Everything before configs[index]

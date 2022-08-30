@@ -49,8 +49,7 @@ const Checkout = ({ cometa, plataforma='',setOpenCheckout, platformData, dataOpe
     },
     
     ]
-    
-    // var linea = '5491134536136'
+
 
   
     useEffect(()=>{
@@ -67,10 +66,10 @@ const Checkout = ({ cometa, plataforma='',setOpenCheckout, platformData, dataOpe
         }
 
 
-        if(window.location.href.split('&')[1] != ''){
+        if(window.location.href.split('&')[1] != '' && window.location.href.split('&')[1] ){
             setLinea(window.location.href.split('&')[1])
         }else{
-            setLinea('5491134536137')
+            setLinea('5492944485981')
         }
     }, [])
 
@@ -79,6 +78,7 @@ const Checkout = ({ cometa, plataforma='',setOpenCheckout, platformData, dataOpe
     }, [oficina])
 
     function checkCuantoDias(dias) {
+        console.log(dias)
         var matches = dias[0].replace(/\D/g,'')
         var date = 0;
         if ( matches != '') {
@@ -184,9 +184,10 @@ const Checkout = ({ cometa, plataforma='',setOpenCheckout, platformData, dataOpe
                             Confirmar Operación
                         </Link> */}
                         <a
-                            onClick={ ()=> window.open(`https://wa.me/${linea}?text=Hola ${vendedor}! Quería realizar la siguiente operación:%0a%0a%0a*Nombre:*%20${dataOpereta.nombre}%0a%0a*Oficina:*%20${dataOpereta.oficina}%0a%0a*Plataforma:*%20${dataOpereta.platform}%0a%0a*Día:*%20${checkCuantoDias(Object.values(dataOpereta.fecha)[0])}%0a%0a*Monto a enviar:*%20${dataOpereta.monto_a_enviar}%0a%0a*Monto a recibir:*%20${dataOpereta.monto_a_recibir}`, '_blank').focus() }
+                            onClick={ ()=> window.open(`https://wa.me/${linea}?text=Hola ${vendedor}! Quería realizar la siguiente operación:%0a%0a%0a*Nombre:*%20${dataOpereta.nombre}%0a%0a*Oficina:*%20${dataOpereta.oficina}%0a%0a*Plataforma:*%20${dataOpereta.platform}%0a%0a*Día:*%20${checkCuantoDias(Object.keys(dataOpereta.fecha)[0])}%0a%0a*Monto a enviar:*%20${dataOpereta.monto_a_enviar}%0a%0a*Monto a recibir:*%20${dataOpereta.monto_a_recibir}`, '_blank').focus() }
 
                         >
+                            {console.log(dataOpereta.fecha)}
                             <Boton1 text={"Confirmar operación"} /> 
                          </a>
 
