@@ -395,6 +395,10 @@ html{
     border-left: var(--gradient1) solid 1px;
 }
 
+.framerAnim{
+    transition: 3s cubic-bezier(.26,1.03,0,1);
+}
+
 
 @media (max-width: 800px){
 body{
