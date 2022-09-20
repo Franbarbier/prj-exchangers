@@ -82,18 +82,17 @@ const Home = ({ setActiveTab }) => {
                 <img src="/assets/logo-l.png"/>
               </div>
               <ul>
-                <li><a href="#plataformas">ver plataformas</a></li>
                 <li><a href="#faq-section">preguntas frecuentes</a></li>
+                <li><a href="#plataformas">plataformas</a></li>
               </ul>
             </div>
           </nav>
-                <div className='main-cont'>
                     <main>
                         <header>
                             <h1>Tu exchanger de confianza.</h1>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                            <a href="#plataformas"><Boton1 text={'Encontrá tu plataforma'}/></a>
-                            <a href="#faq-section"><button>Preguntas frecuentes</button></a>
+                            <a href="#plataformas" className="big-btn"><Boton1 text={'Encontrá tu plataforma'}/></a>
+                            <a href="#faq-section" ><button>Preguntas frecuentes</button></a>
                         </header>
                         <div>
                           <div onClick={()=>{ setViewPlatforms(!viewPlatforms) }}>
@@ -143,30 +142,18 @@ const Home = ({ setActiveTab }) => {
                           </div>
                         </div>
                     </main>
+                <div className='main-cont'>
                     <div id="steps">
                       <div>
-                        <div>
-                          <img width="36px" src="/assets/choose1.png" />
-                        </div>
-                        <p>Selecciona desde que plataforma envias el dinero.</p>
+                          <h3>Obtené tu dinero en 3 simples pasos</h3>
+                          <div id="diagrama">
+                              <img src="/assets/diagram.svg" />
+                          </div>
                       </div>
-                      <div>
-                        <div>
-                          <img width="36px" src="/assets/calc1.png" />
-                        </div>
-                        <p>Calcula el monto y seleccioná por donde retiras.</p>
-                      </div>
-                      <div>
-                        <div>
-                          <img width="36px" src="/assets/receive1.png" />
-                        </div>
-                        <p>Pasá a retirar tu dinero por la oficina elegida :D.</p>
-                      </div>
-
                     </div>
                     <div id="plataformas"></div>
                     <div id="plataformas-cont">
-                        <h3>Dónde tenés tu saldo</h3>
+                        <h3>Dónde tenés tu saldo?</h3>
                         <ul>
                           {plataformas.map((plataforma)=>(
                             <li
@@ -284,6 +271,77 @@ const Home = ({ setActiveTab }) => {
                           )) 
                           }
                         </ul>
+                    </div>
+                    <div id="testimonios">
+                        <div>
+                          <h3>Qué dicen nuestros clientes</h3>
+                          <div>
+                            <div id="numeros">
+                              <div>
+                                <p>5.000</p>
+                                <span>Clientes contentos</span>
+                              </div>
+                              <div>
+                                <p>300</p>
+                                <span>Operacion diarias</span>
+                              </div>
+                            </div>
+
+                            <div id="notifications">
+                                <div>
+                                  <div>
+                                    <div className='notif-img'>
+                                      <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Jos%C3%A9_Larralde_Quilmes.jpg"/>
+                                    </div>
+                                    <div className='notif-info'>
+                                      <p>Jose Larralde</p>
+                                      <span>La verdad es que me cambio la vida conocerlos, que pim que pam tuqui liso paradiso.</span>
+                                    </div>
+                                    <span>2 days ago</span>
+                                  </div>
+                                </div>
+
+                                <div>
+                                  <div>
+                                    <div className='notif-img'>
+                                      <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Jos%C3%A9_Larralde_Quilmes.jpg"/>
+                                    </div>
+                                    <div className='notif-info'>
+                                      <p>Jose Larralde</p>
+                                      <span>La verdad es que me cambio la vida conocerlos, que pim que pam tuqui liso paradiso.</span>
+                                    </div>
+                                    <span>2 days ago</span>
+                                  </div>
+                                </div>
+
+                                <div>
+                                  <div>
+                                    <div className='notif-img'>
+                                      <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Jos%C3%A9_Larralde_Quilmes.jpg"/>
+                                    </div>
+                                    <div className='notif-info'>
+                                      <p>Jose Larralde</p>
+                                      <span>La verdad es que me cambio la vida conocerlos, que pim que pam tuqui liso paradiso.</span>
+                                    </div>
+                                    <span>2 days ago</span>
+                                  </div>
+                                </div>
+
+                                <div>
+                                  <div>
+                                    <div className='notif-img'>
+                                      <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Jos%C3%A9_Larralde_Quilmes.jpg"/>
+                                    </div>
+                                    <div className='notif-info'>
+                                      <p>Jose Larralde</p>
+                                      <span>La verdad es que me cambio la vida conocerlos, que pim que pam tuqui liso paradiso.</span>
+                                    </div>
+                                    <span>2 days ago</span>
+                                  </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
                     </div>
                     <div id="faq-section">
                         <h3>Tenés preguntas?</h3>

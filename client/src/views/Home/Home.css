@@ -1,12 +1,11 @@
 #Home-view{
     background-color: #F0F0F3;
+
 }
 html{
     scroll-behavior: smooth;
 }
-#Home-view>div{
-    padding: 10% 0;
-}
+
 #navv{
     z-index: 35;
     position: fixed;
@@ -31,7 +30,7 @@ html{
 }
 #navv>div ul{
     /* min-width: 35%; */
-    /* display: flex; */
+    display: flex;
     /* align-items: center; */
     justify-content: space-between;
 }
@@ -39,15 +38,26 @@ html{
     transition: .2s;
     cursor: pointer;
     font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background: linear-gradient(to right, var(--gradient1),var(--gradient2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+#navv>div ul li:last-child{
+    margin-left: 50px;
 }
 #navv>div ul li:hover{
-    font-weight: 600;
+    opacity: 0.7;
 }
 
 #Home-view main {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: linear-gradient(168deg, var(--gradient1) 50%, var(--gradient2) 70%, #f0f0f3 50%);
+    padding: 10% 15% 24%;
+    margin: auto;
 }
 #Home-view main header{
     width: 50%;
@@ -57,28 +67,34 @@ html{
 }
 #Home-view main div>div>span{
     font-size: 0.8em;
-    color: #bebebe;
+    color: #b6b6b6;
     margin-bottom: 5%;
     display: block;
-    font-size: 18px;
+    font-size: 14px;
+    text-align: center;
+    text-shadow: 1px 0px 1px #060826;
 
 }
 #Home-view header h1{
-    font-size: 4em;
-    background: linear-gradient(to right, var(--gradient1),var(--gradient2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 3.7em;
+    color: white;
 }
 #Home-view header p{
     color: var(--gris1);
     margin: 10% 0;
-    font-size: 20px;
+    color: white;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 1px;
 }
-#Home-view header a:nth-child(3) button{
+
+.big-btn button{
     font-weight: 600;
+    box-shadow: -6px -6px 19px 0px #ffffff1f, 6px 6px 19px 0px #0000004d, inset -6px -6px 7px 0px #0000004d, inset 6px 6px 7px 0px #ffffff2e;
+
 }
 #Home-view header a:nth-child(4) button{
-    transform: translateX(10%)
+    transform: translateX(20%);
 }
 #Home-view header button:last-child{
     /* margin-left: 20px; */
@@ -87,11 +103,14 @@ html{
     cursor: pointer;
 }
 #Home-view main button{
-    font-size: 18px;
+    font-size: 16px;
+    color: white;
 }
 #mira-plataf{
     padding: 10%;
-    box-shadow: -6px -6px 19px 0px #fff, 6px 6px 19px 0px rgba(174, 174, 192, 0.3), inset -6px -6px 7px 0px rgba(174, 174, 192, 0.2), inset 6px 6px 7px 0px #fff;
+    background: #ffffff69;
+    box-shadow: 0px 15px 35px -10px #ffffff57;
+    border: 1px solid #ddd;
     border-radius: 15px;
     cursor: pointer;
     position: relative;
@@ -99,7 +118,9 @@ html{
 #mira-plataf h3{
     margin-left: 10px;
     font-weight: 400;
-    font-size: 1.5em;
+    color: white;
+    font-size: 2em;
+    letter-spacing: 1px;
 }
 #mira-plataf>div, #mira-plataf>div>div, #mira-plataf li a, #mira-plataf li a>div{
     display: flex;
@@ -144,44 +165,26 @@ html{
 }
 
 #steps{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20vh 0;
+    padding: 0 0 10vh;
 }
-#steps>div{
-    width: 30%;
-    display: flex;
-    align-items: center;
-    color: var(--gris1);
-}
-#steps>div img{
-    position: absolute;
-    width: 36px;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-}
-#steps>div>div{
-    width: 90px;
-    height: 90px;
-    position: relative;
-    box-shadow: -4px -4px 10px 0px #fff,
-                -4px -4px 10px 0 rgba(174, 174, 192, 0.4),
-                inset 3px 3px 3px 0 rgba(174, 174, 192, 0.25), 
-                inset -3px -3px 3px 0px #fff;
-    border-radius: 250px;
-} 
-#steps>div p{
-    margin-left: 15px;
-    width: calc(100% - 90px);
-    font-size: 18px;
+#steps>div>h3{
+    transform: translateY(-10vh);
+    text-align: center;
+    width: 60%;
+    margin: auto;
+    font-size: 2.5em;
+    background: linear-gradient(to right, var(--gradient1),var(--gradient2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 #plataformas-cont>h3{
     text-align: center;
     font-size: 2.5em;
     margin: 10% 0;
+    background: linear-gradient(to right, var(--gradient1),var(--gradient2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 #plataformas-cont>ul>li{
     padding: 3.5% 5%;
@@ -247,11 +250,97 @@ html{
     width: 32px;
     transition: .5s cubic-bezier(.44,.8,.4,1.02);
 }
-
+#testimonios{
+    background: linear-gradient(168deg, var(--gradient1) , var(--gradient2) );
+    width: calc(100vw - 54%);
+    margin-left: -27%;
+    padding: 10% 27%;
+}
+#testimonios>div>h3{
+    font-size: 2.5em;
+    color: white;
+    text-align: center;
+    width: 60%;
+    margin: auto;
+}
+#testimonios>div>div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5%;
+}
+#testimonios>div>div>div{
+    width: 40%;
+}
+#numeros>div{
+    margin-bottom: 5%;
+}
+#numeros>div>p{
+    color: white;
+    font-size: 3.5em;
+    letter-spacing: 1px;
+    position: relative;
+}
+#numeros>div>span{
+    color: white;
+}
+#numeros>div>p:before{
+    content: '+';
+    position: absolute;
+    right: 102%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#notifications>div{
+    /* border: 1px solid #ddd; */
+    background: #ffffff61;
+    border-radius: 20px;
+    padding: 7px 15px;
+    margin-bottom: 5%;
+}
+.notif-img{
+    width: 64px;
+    height: 64px;
+    border-radius: 50px;
+    overflow: hidden;
+}
+.notif-img img{
+    width: 100%;
+    object-fit: cover;
+}
+#notifications>div>div{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+}
+#notifications>div>div>span{
+    position: absolute;
+    font-size: 0.7em;
+    top: 3px;
+    right: 3px;
+}
+.notif-info{
+    color: #fff;
+    width: calc(100% - 78px);
+    margin-left: 10px;
+}
+.notif-info p{
+    font-weight: 600;
+}
+.notif-info span{
+    font-size: 0.7em;
+    font-weight: 300;
+    position: relative!important;
+}
 
 #faq-section>h3{
+    text-align: center;
     font-size: 2.5em;
-    margin: 25vh 0 5%;
+    margin: 10% 0;
+    background: linear-gradient(to right, var(--gradient1),var(--gradient2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 #faq-section ul{
     font-size: 1.2em;
@@ -308,15 +397,34 @@ html{
 
 
 @media (max-width: 800px){
+body{
+    overflow: hidden;
+}
+#navv>div{
+    width: 90%;
+    padding: 0 5%;
+}
+#navv>div ul{
+    width: 60%;
+    align-items: center;
+}
+#navv>div ul li:last-child{
+    margin-left: 15px;
+}
+#navv>div ul li{
+    font-size: 17px;
+}
 #Home-view main{
     flex-direction: column;
+    background: linear-gradient(168deg, var(--gradient1) 20%, var(--gradient2) 70%, #f0f0f3 50%);
+    padding-bottom: 50vh;
 }
 #Home-view main header{
     width: 100%;
-    padding-top: 15vh;
+    padding-top: 10vh;
 }
 #Home-view main header h1{
-    font-size: 3.5em;
+    font-size: 2.5em;
 }
 .main-cont{
     width: 90%;
@@ -330,14 +438,43 @@ html{
 }
 #steps{
     display: block;
-    padding: 10vh 0;
+    margin-top: -50%;
 }
 #steps>div{
     width: 100%;
     margin: 15% 0;
 }
+#steps>div>h3, #testimonios>div>h3{
+    width: 90%;
+}
+#diagrama img{
+    margin-top: -13%;
+    /* transform: scale(1.2); */
+}
+#testimonios{
+    margin-top: 25%;
+    width: 100vw;
+    margin-left: -5%;
+    padding: 10vh 0;
+}
+#testimonios>div>div{
+    flex-direction: column-reverse;
+}
+#testimonios>div>div>div{
+    width: 90%;
+}
+#numeros{
+    display: flex;
+    padding: 10% 10% 0;
+    width: 75%!important;
+    justify-content: space-between;
+}
+#numeros p{
+    font-size: 3em!important ;
+}
 #faq-section{
     padding-bottom: 15vh;
+    padding-top: 10vh;
 }
 #faq-section h6{
     font-size: 1.1em;
@@ -346,9 +483,9 @@ html{
     font-size: 0.9em;
 }
 .icon-preg{
-    width: 2em;
-    height: 2em;
-    margin-right: 5px;
+    width: 0.8em;
+    height: 0.8em;
+    margin-right: 11px;
 }
 
 

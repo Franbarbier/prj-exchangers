@@ -27,6 +27,6 @@ button, input, textarea, select{ font-family: Sulphur Point, sans-serif }
 ::-webkit-scrollbar-thumb:hover{background:hsla(0,0%,47%,.9)}
 
 .main-cont{
-width: 65%;
-margin: auto;
+    width: 65%;
+    margin: auto;
 }
