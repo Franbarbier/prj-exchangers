@@ -448,6 +448,10 @@ body{
     width: 100%;
     margin: 15% 0;
 }
+
+#steps>div>h3{
+    margin-bottom: 10vh;
+}
 #steps>div>h3, #testimonios>div>h3{
     width: 90%;
 }

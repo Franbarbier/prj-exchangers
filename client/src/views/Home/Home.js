@@ -151,7 +151,8 @@ const Home = ({ setActiveTab }) => {
                              animate={{ opacity: 1}}
                              transition={{ delay: 2.5 }}
                              className='framerAnim'
-                            >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</motion.p>
+                            >Desde PRJ, siempre seguimos innovando. <br />
+                            Realiza tu pedido en tan solo segundos, tu tiempo vale.</motion.p>
                             <a href="#plataformas" className="big-btn"><Boton1 text={'Encontrá tu plataforma'}/></a>
                             <a href="#faq-section" ><button>Preguntas frecuentes</button></a>
                         </header>
