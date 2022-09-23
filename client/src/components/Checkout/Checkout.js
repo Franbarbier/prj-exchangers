@@ -173,6 +173,11 @@ const Checkout = ({ cometa, plataforma='',setOpenCheckout, platformData, dataOpe
                         divisa='usd' 
                         plataforma={plataforma.nombre} 
                     />
+
+                    <div className="InputField">
+                        <label>Agregar obsevación: </label>                        
+                        <textarea rows={3} type="text" onChange={ (e)=>{ setDataOpereta({...dataOpereta, observacion: e.target.value}) }}  />
+                    </div>
         
                     <div>
                         <a onClick={ ()=> {setOpenCheckout(false)} }>
@@ -184,7 +189,7 @@ const Checkout = ({ cometa, plataforma='',setOpenCheckout, platformData, dataOpe
                             Confirmar Operación
                         </Link> */}
                         <a
-                            onClick={ ()=> window.open(`https://wa.me/${linea}?text=Hola ${vendedor}! Quería realizar la siguiente operación:%0a%0a%0a*Nombre:*%20${dataOpereta.nombre}%0a%0a*Oficina:*%20${dataOpereta.oficina}%0a%0a*Plataforma:*%20${dataOpereta.platform}%0a%0a*Día:*%20${checkCuantoDias(Object.keys(dataOpereta.fecha)[0])}%0a%0a*Monto a enviar:*%20${dataOpereta.monto_a_enviar}%0a%0a*Monto a recibir:*%20${dataOpereta.monto_a_recibir}`, '_blank').focus() }
+                            onClick={ ()=> window.open(`https://wa.me/${linea}?text=Hola ${vendedor}! Quería realizar la siguiente operación:%0a%0a%0a*Nombre:*%20${dataOpereta.nombre}%0a%0a*Oficina:*%20${dataOpereta.oficina}%0a%0a*Plataforma:*%20${dataOpereta.platform}%0a%0a*Día:*%20${checkCuantoDias(Object.keys(dataOpereta.fecha)[0])}%0a%0a*Monto a enviar:*%20${dataOpereta.monto_a_enviar}%0a%0a*Monto a recibir:*%20${dataOpereta.monto_a_recibir}%0a%0a*Observación:*%20${dataOpereta.observacion && dataOpereta.observacion }`, '_blank').focus() }
 
                         >
                             {console.log(dataOpereta.fecha)}
