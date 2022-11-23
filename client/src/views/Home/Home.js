@@ -122,6 +122,37 @@ const Home = ({ setActiveTab }) => {
 }
 
 
+
+// // esta es la funcion que adentro tiene el intervalo, para pasarle un argumento dinamico
+// const repeat = (num) => {
+ 
+//   // este es el intervalo, que imprima "hola"
+//   setInterval(function(){ 
+//     console.log("hola")
+
+//   // este es el *num* que le vamos a pasar a la funcion que tiene el intervalo y va a ser el tiempo del intervalo
+//   }, num);
+
+// }
+
+// // Por otro lado creo una funcion que le pases horas, minutos, segundo y te devuelva milisegundos: Por ej, si le paso (1,0,0) -1 hora, 0 minutos, 0 segundos- te devuelve 3600 milisegundos
+// const toMilliseconds = (hrs,min,sec) => (hrs*60*60+min*60+sec)*1000;
+
+// // Aca ejecuto la funcion que tiene adentro el intervalo, y de argumento le mando la ffuncion que convierte de (h,m,s) a milisegundo, en este caso le paso una hora y media
+// repeat(toMilliseconds(1, 30, 0))
+
+
+
+
+
+// function everyTime() {
+//   console.log('each 1 second...');
+// }
+
+// var myInterval = setInterval(everyTime, 1000);
+
+
+
   function render(){
       return  <div id="Home-view">
           <nav id="navv">

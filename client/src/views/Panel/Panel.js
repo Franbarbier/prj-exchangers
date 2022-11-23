@@ -128,7 +128,10 @@ const Panel = ({ setActiveTab }) => {
                                     <p className='vendedor'><b>{wpp.vendedor}</b></p>
                                     <p className='numero'>{wpp.numero}</p>
                                     <button className='copylink'
-                                        onClick={(e)=>{  navigator.clipboard.writeText('https://sweet-sherbet-fbb6f1.netlify.app/?'+wpp.vendedor+'&'+wpp.numero); }}
+                                        onClick={(e)=>{
+                                            console.log(window.location.href)
+                                            navigator.clipboard.writeText('https://prjexchangers.netlify.app/?'+wpp.vendedor+'&'+wpp.numero);
+                                        }}
                                     >COPIAR LINK</button>
                                 </div>
                                 <div className='edit-faq' onClick={()=> {handleEditWpp(wpp)}}>

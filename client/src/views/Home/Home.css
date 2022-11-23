@@ -401,7 +401,7 @@ html{
 .rta{
     margin-left: calc(1em + 15px);
     padding: 0% 2%;
-    border-left: #b1b1b1 solid 1px;
+    border-left: #b1b1b1  solid 1px;
     color: #b1b1b1;
 }
 
