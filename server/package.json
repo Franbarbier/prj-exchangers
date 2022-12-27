@@ -8,10 +8,7 @@
     "start": "node index.js",
     "heroku-postbuild": "npm run build"
   },
-  "engines": {
-    "npm": "8.5.5",
-    "node": "v14.x"
-  },
+  "engines": { "npm": "8.5.5", "node": "v14.x" },
   "keywords": [],
   "author": "",
   "license": "ISC",
