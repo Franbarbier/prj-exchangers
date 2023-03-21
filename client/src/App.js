@@ -10,6 +10,7 @@ import './css-global.css';
 import Home from './views/Home/Home';
 import Panel from './views/Panel/Panel';
 import Login from './views/Login/Login';
+import ShutDown from './views/ShutDown/ShutDown';
 
 
 
@@ -37,7 +38,7 @@ const App = () => {
           <AppProvider>
           <ScrollToTop/>
             <Routes>
-                <Route path="/" element={<Home setActiveTab={setActiveTab} />} />
+                <Route path="/" element={<ShutDown setActiveTab={setActiveTab} />} />
                 <Route path="/admin-panel" element=
                     { !user.mail ?
                       <Login setUser={setUser} />

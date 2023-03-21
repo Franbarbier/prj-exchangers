@@ -1,0 +1,22 @@
+#ShutDown-view{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(168deg, var(--gradient1) 50%, var(--gradient2) 70%, #f0f0f3 50%);
+    /* padding: 10% 15% 24%; */
+    height: 100vh;
+    width: 100vw;
+    margin: auto;
+}
+
+#ShutDown-view h2{
+    margin-left: 10%;
+    width: 50%;
+    color: white;
+    font-size: 3em;
+}
+#ShutDown-view img{
+    width: 10%;
+    margin-left: 8.5%;
+    margin-top: -15%;
+}
